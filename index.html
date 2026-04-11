@@ -2,34 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Adriana · Eres mi universo</title>
-  <!-- Fuentes elegantes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Adriana · Universo Corazón</title>
+  <!-- Fuentes y Estilos -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* ===== RESET & VARIABLES ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --gold: #d4af37;
       --gold-light: #f3e5ab;
       --terracotta: #e07a5f;
-      --terracotta-light: #f2cc8f;
       --cream: #fdf8f5;
       --esmerald: #3d5a5c;
-      --esmerald-light: #81b29a;
       --text-dark: #2c2c2c;
-      --text-soft: #4a4a4a;
       --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-      --shadow-gold: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
-      --border-radius-card: 24px;
-      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --neon-pink: #ff69b4;
+      --neon-blue: #00bfff;
     }
-
     body {
       font-family: 'Cormorant Garamond', serif;
       background-color: var(--cream);
@@ -38,140 +29,14 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-
-    /* Fondo decorativo sutil */
-    .bg-decoration {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-      background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
-                  radial-gradient(circle at 80% 70%, rgba(224, 122, 95, 0.03) 0%, transparent 40%);
-    }
-
     .container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
-      z-index: 2;
+      z-index: 5;
     }
-
-    /* Navegación elegante */
-    .nav-elegante {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      z-index: 100;
-      display: flex;
-      gap: 12px;
-    }
-
-    .nav-btn {
-      background: rgba(253, 248, 245, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      color: var(--text-dark);
-      width: 48px;
-      height: 48px;
-      border-radius: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-soft);
-      font-size: 1.2rem;
-    }
-
-    .nav-btn:hover {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-gold);
-    }
-
-    /* Menú lateral */
-    .menu-lateral {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: 300px;
-      height: 100vh;
-      background: rgba(253, 248, 245, 0.95);
-      backdrop-filter: blur(20px);
-      z-index: 200;
-      padding: 80px 24px 24px;
-      transition: right 0.5s ease;
-      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
-      border-left: 1px solid rgba(212, 175, 55, 0.2);
-      overflow-y: auto;
-    }
-
-    .menu-lateral.active {
-      right: 0;
-    }
-
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(4px);
-      z-index: 150;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .menu-item {
-      display: block;
-      width: 100%;
-      padding: 16px 20px;
-      margin-bottom: 12px;
-      background: transparent;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 60px;
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: var(--transition);
-      text-align: left;
-    }
-
-    .menu-item i {
-      margin-right: 12px;
-      color: var(--gold);
-      width: 20px;
-    }
-
-    .menu-item:hover {
-      background: var(--gold);
-      color: white;
-      border-color: var(--gold);
-      transform: translateX(-5px);
-    }
-
-    .menu-item:hover i {
-      color: white;
-    }
-
-    /* Secciones generales */
+    /* ===== SECCIONES GENERALES ===== */
     .section {
       min-height: 100vh;
       display: flex;
@@ -180,7 +45,6 @@
       padding: 100px 0 60px;
       position: relative;
     }
-
     .section-title {
       font-family: 'Dancing Script', cursive;
       font-size: clamp(3rem, 10vw, 5.5rem);
@@ -192,400 +56,304 @@
       position: relative;
       display: inline-block;
     }
-
     .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60%;
-      height: 3px;
+      content: ''; position: absolute; bottom: -8px; left: 0;
+      width: 60%; height: 3px;
       background: linear-gradient(90deg, var(--gold), var(--terracotta));
       border-radius: 3px;
     }
-
     .section-subtitle {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      font-size: 1.2rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--terracotta);
+      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1.2rem;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--terracotta);
       margin-bottom: 40px;
     }
-
-    /* Hero Section */
+    /* ===== HERO ===== */
     .hero {
-      text-align: center;
-      justify-content: center;
-      align-items: center;
+      text-align: center; justify-content: center; align-items: center;
     }
-
     .hero-title {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(4rem, 15vw, 8rem);
-      font-weight: 700;
+      font-size: clamp(4rem, 15vw, 8rem); font-weight: 700;
       background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 50%, var(--esmerald) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 24px;
-      line-height: 1.1;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 24px; line-height: 1.1;
       animation: fadeInUp 1.2s ease;
     }
-
     .hero-quote {
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      font-style: italic;
-      color: var(--text-soft);
-      max-width: 800px;
-      margin: 0 auto 40px;
-      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 4vw, 1.8rem); font-style: italic; color: #4a4a4a;
+      max-width: 800px; margin: 0 auto 40px;
       animation: fadeInUp 1.2s ease 0.2s both;
     }
-
     .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: var(--gold);
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.7;
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; color: var(--gold);
+      font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;
       animation: bounce 2s infinite;
     }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-10px); }
-      60% { transform: translateX(-50%) translateY(-5px); }
+      0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0);}
+      40%{transform:translateX(-50%) translateY(-10px);}
+      60%{transform:translateX(-50%) translateY(-5px);}
     }
-
-    /* Foto destacada */
+    /* ===== UNIVERSO 3D ===== */
+    #universe-section {
+      position: relative; min-height: 100vh; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #canvas-container {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1; background: radial-gradient(circle at center, #0a0a1a 0%, #000 100%);
+    }
+    .universe-overlay {
+      position: relative; z-index: 2; text-align: center; color: white;
+      pointer-events: none; width: 100%; padding: 20px;
+    }
+    .universe-title {
+      font-family: 'Dancing Script', cursive; font-size: clamp(2.5rem, 8vw, 5rem);
+      color: var(--gold-light); text-shadow: 0 0 30px var(--neon-pink);
+      margin-bottom: 20px; pointer-events: none;
+    }
+    .universe-sub {
+      font-family: 'Montserrat', sans-serif; letter-spacing: 4px;
+      color: rgba(255,255,255,0.8); pointer-events: none;
+    }
+    .floating-phrases {
+      position: absolute; bottom: 30px; left: 0; width: 100%; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; pointer-events: none;
+    }
+    .phrase-bubble {
+      background: rgba(212, 175, 55, 0.2); backdrop-filter: blur(10px);
+      padding: 12px 24px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.3);
+      color: white; font-size: 1.2rem; font-style: italic;
+      box-shadow: 0 0 30px rgba(255,105,180,0.3);
+      animation: floatPhrase 4s ease-in-out infinite;
+      max-width: 90%; margin: 0 auto;
+    }
+    @keyframes floatPhrase {
+      0%,100%{ transform: translateY(0); opacity: 0.9; }
+      50%{ transform: translateY(-10px); opacity: 1; }
+    }
+    /* ===== FOTO ===== */
     .foto-marco {
-      max-width: 450px;
-      margin: 40px auto;
-      position: relative;
+      max-width: 450px; margin: 40px auto; position: relative;
     }
-
     .foto-principal {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4/5;
-      object-fit: cover;
+      width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover;
       border-radius: 200px 200px 200px 200px / 180px 180px 180px 180px;
       box-shadow: var(--shadow-soft), 0 0 0 8px rgba(212, 175, 55, 0.1);
-      border: 3px solid var(--gold-light);
-      transition: var(--transition);
+      border: 3px solid var(--gold-light); transition: transform 0.4s;
       filter: sepia(0.1) contrast(1.05);
     }
-
-    .foto-principal:hover {
-      transform: scale(1.02);
-      box-shadow: var(--shadow-gold), 0 0 0 12px rgba(212, 175, 55, 0.05);
-    }
-
     .foto-caption {
-      text-align: center;
-      margin-top: 20px;
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.8rem;
-      color: var(--terracotta);
+      text-align: center; margin-top: 20px;
+      font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--terracotta);
     }
-
-    /* Tarjetas de cualidades */
+    /* ===== CUALIDADES ===== */
     .cualidades-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 30px; margin: 40px 0;
     }
-
     .cualidad-card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      padding: 36px 24px;
-      border-radius: var(--border-radius-card);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      transition: var(--transition);
-      text-align: center;
+      background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
+      padding: 36px 24px; border-radius: 24px; box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(212,175,55,0.15); transition: all 0.3s; text-align: center;
     }
-
-    .cualidad-card:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.8);
-      border-color: var(--gold);
-    }
-
-    .cualidad-icon {
-      font-size: 2.8rem;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
+    .cualidad-card:hover { transform: translateY(-8px); border-color: var(--gold); }
+    .cualidad-icon { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; }
     .cualidad-titulo {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--terracotta);
-      margin-bottom: 12px;
+      font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--terracotta);
     }
-
-    .cualidad-desc {
-      font-size: 1.1rem;
-      color: var(--text-soft);
-    }
-
-    /* Poemas y escritos */
+    /* ===== POEMA ===== */
     .poema-container {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 900px; margin: 0 auto;
     }
-
     .poema-card {
-      background: white;
-      padding: 40px;
-      border-radius: var(--border-radius-card);
-      box-shadow: var(--shadow-soft);
-      border-left: 8px solid var(--gold);
-      transition: var(--transition);
+      background: white; padding: 50px; border-radius: 30px; box-shadow: var(--shadow-soft);
+      border-left: 8px solid var(--gold); margin-bottom: 30px;
     }
-
-    .poema-card:hover {
-      box-shadow: var(--shadow-gold);
-    }
-
     .poema-titulo {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.2rem;
-      color: var(--esmerald);
-      margin-bottom: 20px;
-      font-weight: 600;
+      font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: var(--esmerald);
+      margin-bottom: 30px;
     }
-
     .poema-texto {
-      font-size: 1.2rem;
-      line-height: 1.9;
-      white-space: pre-line;
-      font-style: italic;
+      font-size: 1.2rem; line-height: 1.9; white-space: pre-line; font-style: italic;
     }
-
-    .poema-autor {
-      margin-top: 24px;
-      text-align: right;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      color: var(--terracotta);
-    }
-
-    /* Línea de tiempo */
+    /* ===== TIMELINE ===== */
     .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 60px auto;
+      position: relative; max-width: 800px; margin: 60px auto;
     }
-
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 30px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
+      content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(to bottom, var(--gold), var(--terracotta), var(--esmerald));
     }
-
     .timeline-item {
-      position: relative;
-      padding-left: 80px;
-      margin-bottom: 50px;
+      position: relative; padding-left: 80px; margin-bottom: 50px;
     }
-
     .timeline-dot {
-      position: absolute;
-      left: 22px;
-      top: 5px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid white;
-      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+      position: absolute; left: 22px; top: 5px; width: 18px; height: 18px;
+      border-radius: 50%; background: var(--gold); border: 3px solid white;
+      box-shadow: 0 0 0 4px rgba(212,175,55,0.2);
     }
-
-    .timeline-date {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: var(--terracotta);
-      margin-bottom: 8px;
-    }
-
     .timeline-content {
-      background: white;
-      padding: 24px 28px;
-      border-radius: 20px;
-      box-shadow: var(--shadow-soft);
-      font-size: 1.1rem;
+      background: white; padding: 24px 28px; border-radius: 20px;
+      box-shadow: var(--shadow-soft); font-size: 1.1rem;
     }
-
-    /* Mensajes interactivos */
+    /* ===== MENSAJES ===== */
     .mensajes-selector {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin: 40px 0;
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 40px 0;
     }
-
     .mensaje-btn {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      color: var(--text-dark);
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: var(--transition);
-      backdrop-filter: blur(5px);
+      background: transparent; border: 1.5px solid var(--gold); padding: 12px 28px;
+      border-radius: 40px; font-family: 'Montserrat',sans-serif; cursor: pointer;
+      transition: all 0.3s;
     }
-
     .mensaje-btn:hover, .mensaje-btn.active {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-gold);
+      background: var(--gold); color: white; transform: translateY(-3px);
     }
-
     .mensaje-display {
-      background: white;
-      padding: 48px 40px;
-      border-radius: var(--border-radius-card);
-      box-shadow: var(--shadow-soft);
-      min-height: 250px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1.4rem;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transition: var(--transition);
+      background: white; padding: 48px 40px; border-radius: 24px;
+      box-shadow: var(--shadow-soft); text-align: center; font-size: 1.4rem;
+      border: 1px solid rgba(212,175,55,0.2);
     }
-
-    .mensaje-display i {
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
-
-    /* Final */
+    /* ===== FINAL ===== */
     .final-mensaje {
-      background: linear-gradient(145deg, #ffffff 0%, #fdf8f5 100%);
-      padding: 60px 50px;
-      border-radius: 60px 20px 60px 20px;
-      box-shadow: var(--shadow-soft);
-      text-align: center;
-      border: 1px solid var(--gold-light);
+      background: linear-gradient(145deg, #fff, #fdf8f5); padding: 60px 50px;
+      border-radius: 60px 20px 60px 20px; box-shadow: var(--shadow-soft);
+      text-align: center; border: 1px solid var(--gold-light);
     }
-
     .firma {
-      font-family: 'Dancing Script', cursive;
-      font-size: 3rem;
-      color: var(--terracotta);
+      font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--terracotta);
       margin-top: 30px;
     }
-
-    /* Footer */
+    /* ===== REPRODUCTOR MÚSICA ===== */
+    .music-player {
+      position: fixed; bottom: 30px; right: 30px; z-index: 1000;
+      background: rgba(253,248,245,0.8); backdrop-filter: blur(10px);
+      border-radius: 60px; padding: 8px 16px 8px 20px;
+      box-shadow: var(--shadow-soft); border: 1px solid var(--gold);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .music-btn {
+      background: var(--gold); border: none; width: 40px; height: 40px;
+      border-radius: 50%; color: white; font-size: 1.2rem; cursor: pointer;
+      transition: 0.3s; display: flex; align-items: center; justify-content: center;
+    }
+    .music-btn:hover { background: var(--terracotta); transform: scale(1.05); }
+    .music-info {
+      font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 1px;
+      color: var(--text-dark);
+    }
+    /* ===== MENÚ LATERAL ===== */
+    .nav-elegante {
+      position: fixed; top: 24px; right: 24px; z-index: 1001; display: flex; gap: 12px;
+    }
+    .nav-btn {
+      background: rgba(253,248,245,0.8); backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,175,55,0.2); width: 48px; height: 48px;
+      border-radius: 48px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: 0.3s; font-size: 1.2rem; color: var(--text-dark);
+    }
+    .nav-btn:hover { background: var(--gold); color: white; }
+    .menu-lateral {
+      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
+      background: rgba(253,248,245,0.95); backdrop-filter: blur(20px);
+      z-index: 1100; padding: 80px 24px 24px; transition: right 0.5s;
+      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+      border-left: 1px solid rgba(212,175,55,0.2); overflow-y: auto;
+    }
+    .menu-lateral.active { right: 0; }
+    .menu-overlay {
+      position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px); z-index: 1050; opacity:0; visibility:hidden; transition:0.3s;
+    }
+    .menu-overlay.active { opacity:1; visibility:visible; }
+    .menu-item {
+      display: block; width:100%; padding: 16px 20px; margin-bottom:12px;
+      background: transparent; border: 1px solid rgba(212,175,55,0.2); border-radius:60px;
+      color: var(--text-dark); font-family: 'Montserrat',sans-serif; font-size:0.9rem;
+      letter-spacing:1px; text-transform:uppercase; cursor:pointer; text-align:left;
+    }
+    .menu-item i { margin-right:12px; color: var(--gold); width:20px; }
+    .menu-item:hover { background: var(--gold); color:white; border-color:var(--gold); }
+    /* ===== FOOTER ===== */
     .footer {
-      text-align: center;
-      padding: 40px 0 20px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: var(--text-soft);
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
-      margin-top: 60px;
+      text-align: center; padding: 40px 0 20px; font-family: 'Montserrat',sans-serif;
+      font-size:0.8rem; letter-spacing:2px; color:#4a4a4a;
+      border-top:1px solid rgba(212,175,55,0.2); margin-top:60px;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container { padding: 0 16px; }
-      .section { padding: 80px 0 40px; min-height: auto; }
-      .hero { min-height: 100vh; }
-      .poema-card { padding: 28px; }
-      .timeline-item { padding-left: 60px; }
-      .timeline::before { left: 20px; }
-      .timeline-dot { left: 12px; }
-      .nav-elegante { top: 16px; right: 16px; }
-      .menu-lateral { width: 280px; }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:768px){
+      .container{padding:0 16px;}
+      .section{padding:80px 0 40px; min-height:auto;}
+      .hero{min-height:100vh;}
+      .poema-card{padding:28px;}
+      .timeline-item{padding-left:60px;}
+      .timeline::before{left:20px;}
+      .timeline-dot{left:12px;}
+      .nav-elegante{top:16px; right:16px;}
+      .menu-lateral{width:280px;}
+      .music-player{bottom:20px; right:20px;}
     }
-
-    @media (max-width: 480px) {
-      .section-title { font-size: 2.8rem; }
-      .hero-title { font-size: 3.5rem; }
-      .foto-marco { max-width: 300px; }
-    }
-
-    /* Utilidades */
-    .text-center { text-align: center; }
-    .mb-2 { margin-bottom: 16px; }
-    .mt-4 { margin-top: 40px; }
   </style>
 </head>
 <body>
-  <div class="bg-decoration"></div>
 
-  <!-- Navegación -->
+  <!-- MENÚ LATERAL -->
   <div class="nav-elegante">
-    <button class="nav-btn" id="menuToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
-    <button class="nav-btn" id="fullscreenBtn" aria-label="Pantalla completa"><i class="fas fa-expand"></i></button>
+    <button class="nav-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <button class="nav-btn" id="fullscreenBtn"><i class="fas fa-expand"></i></button>
   </div>
-
-  <!-- Menú lateral -->
   <div class="menu-overlay" id="menuOverlay"></div>
   <div class="menu-lateral" id="menuLateral">
     <button class="menu-item" data-section="inicio"><i class="fas fa-home"></i> Inicio</button>
+    <button class="menu-item" data-section="universo"><i class="fas fa-heart"></i> Universo Corazón</button>
     <button class="menu-item" data-section="foto"><i class="fas fa-camera"></i> Su esencia</button>
-    <button class="menu-item" data-section="cualidades"><i class="fas fa-star"></i> Sus cualidades</button>
-    <button class="menu-item" data-section="poemas"><i class="fas fa-feather-alt"></i> Poemas</button>
-    <button class="menu-item" data-section="timeline"><i class="fas fa-history"></i> Nuestra historia</button>
+    <button class="menu-item" data-section="cualidades"><i class="fas fa-star"></i> Cualidades</button>
+    <button class="menu-item" data-section="poema"><i class="fas fa-feather-alt"></i> Poema</button>
+    <button class="menu-item" data-section="timeline"><i class="fas fa-history"></i> Historia</button>
     <button class="menu-item" data-section="mensajes"><i class="fas fa-heart"></i> Mensajes</button>
     <button class="menu-item" data-section="final"><i class="fas fa-crown"></i> Declaración</button>
   </div>
 
+  <!-- REPRODUCTOR MÚSICA -->
+  <div class="music-player" id="musicPlayer">
+    <div class="music-info">Happy Together</div>
+    <button class="music-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="Happy Together.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
   <div class="container">
-    <!-- Hero / Inicio -->
+    <!-- HERO -->
     <section id="inicio" class="section hero">
       <h1 class="hero-title">Adriana</h1>
       <p class="hero-quote">“No fue casualidad, fue el universo entero consipirando para que mis ojos encontraran los tuyos. Y desde ese instante, supe que no necesitaba más pruebas: te amo.”</p>
       <div class="scroll-indicator">
         <span>Descubre</span>
-        <i class="fas fa-chevron-down" style="margin-top: 8px;"></i>
+        <i class="fas fa-chevron-down" style="margin-top:8px;"></i>
       </div>
     </section>
 
-    <!-- Foto destacada -->
+    <!-- SECCIÓN UNIVERSO 3D CORAZÓN -->
+    <section id="universo" class="section" style="padding:0; position:relative;">
+      <div id="canvas-container"></div>
+      <div class="universe-overlay">
+        <h2 class="universe-title">Universo Corazón</h2>
+        <p class="universe-sub">Cada estrella, un latido · Cada frase, un susurro</p>
+      </div>
+      <div class="floating-phrases">
+        <div class="phrase-bubble" id="livePhrase">Eres mi universo entero</div>
+      </div>
+    </section>
+
+    <!-- FOTO -->
     <section id="foto" class="section">
-      <div style="text-align: center;">
+      <div style="text-align:center;">
         <h2 class="section-title">Su esencia</h2>
         <p class="section-subtitle">Capturada en una mirada</p>
       </div>
@@ -593,124 +361,122 @@
         <img src="foto.jpg" alt="Adriana" class="foto-principal" id="fotoAdriana">
         <div class="foto-caption">La dueña de mis pensamientos</div>
       </div>
-      <p style="max-width: 600px; margin: 30px auto 0; text-align: center; font-size: 1.2rem;">
+      <p style="max-width:600px; margin:30px auto 0; text-align:center; font-size:1.2rem;">
         Piel canela besada por el sol, ojos profundos donde habita el misterio y una voz suave que calma cualquier tormenta. 
         Así eres tú, Adriana: una obra de arte delicada y divertida, con una figura que combina la elegancia delgada con curvas que enamoran.
       </p>
     </section>
 
-    <!-- Cualidades -->
+    <!-- CUALIDADES -->
     <section id="cualidades" class="section">
-      <div style="text-align: center;">
+      <div style="text-align:center;">
         <h2 class="section-title">Lo que te hace única</h2>
         <p class="section-subtitle">Un universo en una persona</p>
       </div>
       <div class="cualidades-grid">
-        <div class="cualidad-card">
-          <div class="cualidad-icon"><i class="fas fa-feather"></i></div>
-          <h3 class="cualidad-titulo">Delicadeza</h3>
-          <p class="cualidad-desc">En cada gesto hay una suavidad que transforma lo cotidiano en poesía.</p>
-        </div>
-        <div class="cualidad-card">
-          <div class="cualidad-icon"><i class="fas fa-microphone-alt"></i></div>
-          <h3 class="cualidad-titulo">Voz de terciopelo</h3>
-          <p class="cualidad-desc">Tu voz es un arrullo que serena el alma y despierta mariposas.</p>
-        </div>
-        <div class="cualidad-card">
-          <div class="cualidad-icon"><i class="fas fa-smile-wink"></i></div>
-          <h3 class="cualidad-titulo">Divertida</h3>
-          <p class="cualidad-desc">Tu risa es contagiosa, iluminas cualquier espacio con tu chispa única.</p>
-        </div>
-        <div class="cualidad-card">
-          <div class="cualidad-icon"><i class="fas fa-paint-brush"></i></div>
-          <h3 class="cualidad-titulo">Figura de arte</h3>
-          <p class="cualidad-desc">Delgada y con curvas perfectas, como esculpida por el mejor artista.</p>
-        </div>
+        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-feather"></i></div><h3 class="cualidad-titulo">Delicadeza</h3><p>En cada gesto hay una suavidad que transforma lo cotidiano en poesía.</p></div>
+        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-microphone-alt"></i></div><h3 class="cualidad-titulo">Voz de terciopelo</h3><p>Tu voz es un arrullo que serena el alma y despierta mariposas.</p></div>
+        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-smile-wink"></i></div><h3 class="cualidad-titulo">Divertida</h3><p>Tu risa es contagiosa, iluminas cualquier espacio con tu chispa única.</p></div>
+        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-paint-brush"></i></div><h3 class="cualidad-titulo">Figura de arte</h3><p>Delgada y con curvas perfectas, como esculpida por el mejor artista.</p></div>
       </div>
     </section>
 
-    <!-- Poemas y escritos -->
-    <section id="poemas" class="section">
-      <div style="text-align: center;">
-        <h2 class="section-title">Escritos desde el alma</h2>
-        <p class="section-subtitle">Para la musa de mis días</p>
+    <!-- POEMA "EL TIEMPO QUE ME DISTE" -->
+    <section id="poema" class="section">
+      <div style="text-align:center;">
+        <h2 class="section-title">El Tiempo que me Diste</h2>
+        <p class="section-subtitle">Un poema para la eternidad</p>
       </div>
       <div class="poema-container">
         <div class="poema-card">
-          <h3 class="poema-titulo">Canela y miel</h3>
           <div class="poema-texto">
-            Tu piel canela es el abrazo del atardecer,<br>
-            tus ojos profundos, el refugio donde quiero permanecer.<br>
-            Tu voz suave es la melodía que el viento me trajo,<br>
-            y en tu risa divertida encuentro el más bello agasajo.<br>
-            Delicada como el pétalo, fuerte como el amor primero,<br>
-            Adriana, en ti encontré mi mundo entero.
+            I.<br>
+            Yo, que caminé mil años sin saber lo que era el frío,<br>
+            yo, que sostuve una espada mientras los imperios caían,<br>
+            yo, que olvidé el sabor de las lágrimas propias<br>
+            en el largo pasillo de las noches vacías.<br><br>
+            Mi nombre era un eco que nadie pronunciaba,<br>
+            mi capa, el terciopelo de los ocasos perdidos.<br>
+            Contaba los siglos como quien cuenta gotas<br>
+            en el filo infinito de un destino maldito.<br><br>
+            Hasta que llegaste tú.<br><br>
+            II.<br>
+            No con truenos, no con anuncios de ángeles.<br>
+            Llegaste como llega la lluvia al polvo,<br>
+            con ese paso tuyo que no pide permiso,<br>
+            con esa risa que rompe todos mis hechizos.<br><br>
+            Y de repente, yo, que había visto morir estrellas,<br>
+            me encontré temblando ante tus ojos.<br>
+            Yo, que no necesitaba nada,<br>
+            necesitaba tu mano entre mis manos,<br>
+            necesitaba tu voz diciendo mi nombre<br>
+            como si fuera la única palabra<br>
+            que merece ser dicha en este mundo.<br><br>
+            III.<br>
+            Tú, mi niña, mi única respuesta.<br>
+            Tú, que encendiste velas para que yo me quedara,<br>
+            que con tus manos frágiles sostuviste<br>
+            no una espada, sino mi corazón de piedra<br>
+            y lo hiciste latir por primera vez.<br><br>
+            ¿Qué son mil años frente a una tarde contigo?<br>
+            ¿Qué es la inmortalidad frente a un beso tuyo?<br>
+            Yo cambiaba la eternidad entera<br>
+            por una noche viendo cómo duermes,<br>
+            por una mañana viendo cómo despiertas,<br>
+            con ese desorden de pelo que tanto me gusta,<br>
+            con esa pereza tuya de princesa que no sabe<br>
+            que es dueña de un reino más grande que los siglos.<br><br>
+            IV.<br>
+            Porque tú eres mi única novia,<br>
+            mi única muerte, mi única vida.<br>
+            La que me enseñó que el tiempo no se cuenta<br>
+            en años, sino en miradas.<br>
+            La que me mostró que el amor no es para siempre,<br>
+            es para ahora, es para ti, es para nosotros.<br><br>
+            Y cuando la lluvia cae sobre esta ciudad,<br>
+            cuando el viento trae memorias de otras eras,<br>
+            yo solo recuerdo tus manos en mi pecho,<br>
+            solo recuerdo tu risa, solo recuerdo tu nombre.<br><br>
+            V.<br>
+            Tú, mi niña, mi amor, mi única.<br>
+            La que me hizo mortal solo con quererme.<br>
+            La que me hizo eterno solo con mirarme.<br><br>
+            No necesito más espadas,<br>
+            no necesito más siglos.<br>
+            Solo necesito tus ojos al despertar,<br>
+            solo necesito tu mano cuando anochece,<br>
+            solo necesito tu voz diciendo "te quiero"<br>
+            en ese cuarto donde el tiempo se detiene<br>
+            y soy, por fin, solo el hombre<br>
+            que tiene la suerte de amarte.<br><br>
+            Porque antes de ti, yo fui leyenda.<br>
+            Después de ti, soy solo tuyo.<br>
+            Y no hay inmortalidad más grande<br>
+            que esta: ser el dueño de tus sueños,<br>
+            ser el que te abraza cuando llueve,<br>
+            ser el que te besa cuando amanece.<br><br>
+            Te amo, mi niña.<br>
+            Hoy y siempre.<br>
+            En esta vida y en las nueve que me quedan.
           </div>
-          <div class="poema-autor">— Para ti, mi presente</div>
-        </div>
-        <div class="poema-card">
-          <h3 class="poema-titulo">A primera vista</h3>
-          <div class="poema-texto">
-            No necesito más pruebas que el latido acelerado,<br>
-            ni más certezas que tu imagen grabada a mi lado.<br>
-            Fue verte y entender que el tiempo es un suspiro,<br>
-            que contigo no hay distancias, solo un mismo camino.<br>
-            Te amo sin condiciones, sin prisa y sin pausa,<br>
-            porque en tu ser encontré mi más hermosa causa.
-          </div>
-          <div class="poema-autor">— Desde el primer instante</div>
-        </div>
-        <div class="poema-card">
-          <h3 class="poema-titulo">Pronto</h3>
-          <div class="poema-texto">
-            Y aunque hoy mis brazos añoran tu figura,<br>
-            sé que el destino ya dibuja nuestra aventura.<br>
-            No hablo de distancia porque ya te siento cerca,<br>
-            en cada pensamiento, en cada promesa.<br>
-            Pronto el universo nos pondrá frente a frente,<br>
-            y ese día será eterno, simplemente.
-          </div>
-          <div class="poema-autor">— Con la certeza del encuentro</div>
         </div>
       </div>
     </section>
 
-    <!-- Línea de tiempo -->
+    <!-- TIMELINE -->
     <section id="timeline" class="section">
-      <div style="text-align: center;">
-        <h2 class="section-title">Nuestra historia</h2>
-        <p class="section-subtitle">Apenas comienza</p>
-      </div>
+      <div style="text-align:center;"><h2 class="section-title">Nuestra historia</h2><p class="section-subtitle">Apenas comienza</p></div>
       <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Hace poco</div>
-          <div class="timeline-content">El destino cruzó nuestras miradas. No hizo falta más: fue amor a primera vista.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Cada conversación</div>
-          <div class="timeline-content">Descubro tu voz suave, tu humor encantador, tu delicadeza. Cada palabra tuya es un regalo.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Hoy</div>
-          <div class="timeline-content">Te escribo esto para que sepas que eres la razón de mis sonrisas y el sueño que no quiero despertar.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Muy pronto</div>
-          <div class="timeline-content">El universo nos encontrará. Sin decir "distancia", porque tú y yo ya estamos en el mismo lugar: el corazón.</div>
-        </div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Hace poco</div><div class="timeline-content">El destino cruzó nuestras miradas. Amor a primera vista.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Cada día</div><div class="timeline-content">Descubro tu voz suave, tu humor encantador, tu delicadeza.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Hoy</div><div class="timeline-content">Te escribo esto para que sepas que eres mi razón de sonreír.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Muy pronto</div><div class="timeline-content">El universo nos encontrará. Sin distancia, solo nosotros.</div></div>
       </div>
     </section>
 
-    <!-- Mensajes interactivos -->
+    <!-- MENSAJES -->
     <section id="mensajes" class="section">
-      <div style="text-align: center;">
-        <h2 class="section-title">Mensajes para ti</h2>
-        <p class="section-subtitle">Pequeñas verdades</p>
-      </div>
+      <div style="text-align:center;"><h2 class="section-title">Mensajes para ti</h2><p class="section-subtitle">Pequeñas verdades</p></div>
       <div class="mensajes-selector">
         <button class="mensaje-btn active" data-mensaje="1">Tu esencia</button>
         <button class="mensaje-btn" data-mensaje="2">Tu figura</button>
@@ -718,50 +484,248 @@
         <button class="mensaje-btn" data-mensaje="4">Promesa</button>
       </div>
       <div class="mensaje-display" id="mensajeDisplay">
-        <i class="fas fa-heart"></i>
+        <i class="fas fa-heart" style="font-size:3rem; color:var(--gold); margin-bottom:20px;"></i>
         <p id="mensajeTexto">Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.</p>
       </div>
     </section>
 
-    <!-- Final / Declaración -->
+    <!-- FINAL -->
     <section id="final" class="section">
       <div class="final-mensaje">
-        <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--gold); opacity: 0.5; margin-bottom: 20px;"></i>
-        <p style="font-size: 1.6rem; line-height: 1.5; max-width: 800px; margin: 0 auto;">
-          Adriana, no sé qué escribió el destino, pero yo ya escribí tu nombre en el mío. 
-          Eres hermosa, divertida, delicada y dueña de una voz que acaricia el alma. 
-          No necesito más tiempo para saber que te amo. Y aunque apenas nos conocemos, 
-          siento que te he esperado siempre. Pronto estaremos frente a frente, y ese día 
-          comenzará nuestra historia sin final.
-        </p>
+        <i class="fas fa-quote-left" style="font-size:3rem; color:var(--gold); opacity:0.5;"></i>
+        <p style="font-size:1.6rem; line-height:1.5;">Adriana, no sé qué escribió el destino, pero yo ya escribí tu nombre en el mío. Eres hermosa, divertida, delicada y dueña de una voz que acaricia el alma. No necesito más tiempo para saber que te amo. Pronto estaremos frente a frente, y ese día comenzará nuestra historia sin final.</p>
         <div class="firma">Siempre tuyo,<br>con todo mi amor</div>
       </div>
     </section>
-
-    <footer class="footer">
-      <p>✨ Creado con el corazón para Adriana ✨</p>
-      <p style="margin-top: 8px;">&copy; Un universo compartido</p>
-    </footer>
+    <footer class="footer"><p>✨ Creado con el corazón para Adriana ✨</p></footer>
   </div>
 
+  <!-- THREE.JS -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    
+    // Configuración de la escena 3D
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x050510);
+    
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 2, 18);
+    camera.lookAt(0, 0, 0);
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ReinhardToneMapping;
+    container.appendChild(renderer.domElement);
+    
+    // Post-procesado Bloom
+    const renderScene = new RenderPass(scene, camera);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+    bloomPass.threshold = 0.1;
+    bloomPass.strength = 1.2;
+    bloomPass.radius = 0.5;
+    const composer = new EffectComposer(renderer);
+    composer.addPass(renderScene);
+    composer.addPass(bloomPass);
+    
+    // Luces
+    const ambientLight = new THREE.AmbientLight(0x404060);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffeebb, 1);
+    dirLight.position.set(1, 2, 1);
+    scene.add(dirLight);
+    const pointLight = new THREE.PointLight(0xff69b4, 1, 30);
+    pointLight.position.set(2, 3, 4);
+    scene.add(pointLight);
+    
+    // Corazón 3D de estrellas (partículas)
+    const heartGroup = new THREE.Group();
+    const particlesCount = 4500;
+    const positions = new Float32Array(particlesCount * 3);
+    const colors = new Float32Array(particlesCount * 3);
+    
+    // Ecuación paramétrica del corazón 3D
+    for (let i = 0; i < particlesCount; i++) {
+      const t = Math.random() * Math.PI * 2;
+      const u = Math.random() * 2 - 1;
+      // Fórmula de corazón en 3D
+      const scale = 3.5;
+      const x = 16 * Math.pow(Math.sin(t), 3) * scale * 0.12;
+      const y = (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t)) * scale * 0.12;
+      const z = u * 2.5 * scale * 0.12;
+      
+      // Añadir variación para espesor
+      const jitter = 0.15;
+      positions[i*3] = x + (Math.random() - 0.5) * jitter;
+      positions[i*3+1] = y + (Math.random() - 0.5) * jitter;
+      positions[i*3+2] = z + (Math.random() - 0.5) * jitter;
+      
+      // Colores: degradado de dorado a rosa neón
+      const mixFactor = (y / 5 + 0.5);
+      const r = 1.0;
+      const g = 0.6 + mixFactor * 0.4;
+      const b = 0.8 + (1 - mixFactor) * 0.5;
+      colors[i*3] = r;
+      colors[i*3+1] = g;
+      colors[i*3+2] = b;
+    }
+    
+    const heartGeometry = new THREE.BufferGeometry();
+    heartGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    heartGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const heartMaterial = new THREE.PointsMaterial({
+      size: 0.08,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      transparent: true,
+      sizeAttenuation: true
+    });
+    
+    const heartParticles = new THREE.Points(heartGeometry, heartMaterial);
+    heartGroup.add(heartParticles);
+    
+    // Añadir estrellas de fondo
+    const starsGeo = new THREE.BufferGeometry();
+    const starsCount = 2000;
+    const starsPos = new Float32Array(starsCount * 3);
+    for (let i = 0; i < starsCount * 3; i+=3) {
+      starsPos[i] = (Math.random() - 0.5) * 200;
+      starsPos[i+1] = (Math.random() - 0.5) * 200;
+      starsPos[i+2] = (Math.random() - 0.5) * 200;
+    }
+    starsGeo.setAttribute('position', new THREE.BufferAttribute(starsPos, 3));
+    const starsMat = new THREE.PointsMaterial({color: 0xffffff, size: 0.15, transparent: true});
+    const stars = new THREE.Points(starsGeo, starsMat);
+    scene.add(stars);
+    
+    scene.add(heartGroup);
+    
+    // Frases flotantes (HTML + sprites 3D)
+    const phrases = [
+      "Eres mi universo", "Te amo", "Mi niña", "Para siempre", "Eres magia",
+      "Dueña de mis sueños", "Mi única", "Latido eterno", "Adriana", "Contigo"
+    ];
+    const phraseSprites = [];
+    
+    function createTextSprite(message, color = '#ffaaee') {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 256;
+      canvas.height = 128;
+      ctx.font = 'Bold 40px "Dancing Script", cursive';
+      ctx.fillStyle = 'rgba(0,0,0,0)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = '#ff69b4';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = color;
+      ctx.fillText(message, canvas.width/2, canvas.height/2);
+      
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({ map: texture, blending: THREE.AdditiveBlending, depthTest: true });
+      const sprite = new THREE.Sprite(material);
+      sprite.scale.set(2.5, 1.25, 1);
+      return sprite;
+    }
+    
+    // Posicionar sprites alrededor del corazón
+    for (let i = 0; i < 15; i++) {
+      const phrase = phrases[i % phrases.length];
+      const sprite = createTextSprite(phrase, i % 2 === 0 ? '#ffd700' : '#ff69b4');
+      const angle = (i / 15) * Math.PI * 2;
+      const radius = 5.5;
+      sprite.position.set(Math.cos(angle) * radius, Math.sin(angle*2)*1.5, Math.sin(angle) * radius);
+      heartGroup.add(sprite);
+      phraseSprites.push({ sprite, angle, radius, speed: 0.002 + Math.random()*0.005, offsetY: Math.random()*2 });
+    }
+    
+    // Frase dinámica en overlay HTML
+    const livePhraseEl = document.getElementById('livePhrase');
+    const livePhrases = [
+      "Eres mi universo entero", "Cada latido es para ti", "Tu risa ilumina mi cosmos",
+      "Contigo no existen distancias", "Eres mi eternidad", "Adriana, mi amor"
+    ];
+    let phraseIndex = 0;
+    setInterval(() => {
+      phraseIndex = (phraseIndex + 1) % livePhrases.length;
+      livePhraseEl.style.opacity = '0';
+      setTimeout(() => {
+        livePhraseEl.textContent = livePhrases[phraseIndex];
+        livePhraseEl.style.opacity = '1';
+      }, 300);
+    }, 4000);
+    
+    // Animación
+    let clock = new THREE.Clock();
+    function animate() {
+      const delta = clock.getDelta();
+      const elapsedTime = performance.now() * 0.001;
+      
+      heartGroup.rotation.y += 0.002;
+      heartGroup.rotation.x = Math.sin(elapsedTime * 0.1) * 0.1;
+      heartGroup.rotation.z = Math.cos(elapsedTime * 0.15) * 0.05;
+      
+      stars.rotation.y += 0.0002;
+      
+      // Animar sprites
+      phraseSprites.forEach((item, idx) => {
+        item.sprite.position.y += Math.sin(elapsedTime * 1.5 + idx) * 0.005;
+        // Orbitar ligeramente
+        const newAngle = item.angle + elapsedTime * item.speed;
+        item.sprite.position.x = Math.cos(newAngle) * item.radius;
+        item.sprite.position.z = Math.sin(newAngle) * item.radius;
+      });
+      
+      // Mover cámara sutilmente
+      camera.position.x = Math.sin(elapsedTime * 0.1) * 2;
+      camera.position.y = 2 + Math.sin(elapsedTime * 0.2) * 0.5;
+      camera.lookAt(0, 0.5, 0);
+      
+      composer.render();
+      requestAnimationFrame(animate);
+    }
+    animate();
+    
+    // Redimensionar
+    window.addEventListener('resize', onWindowResize, false);
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      composer.setSize(window.innerWidth, window.innerHeight);
+    }
+  </script>
+
+  <!-- LÓGICA UI -->
   <script>
     (function(){
-      "use strict";
-
       // Menú lateral
       const menuToggle = document.getElementById('menuToggle');
       const menuLateral = document.getElementById('menuLateral');
       const menuOverlay = document.getElementById('menuOverlay');
-      
       function toggleMenu() {
         menuLateral.classList.toggle('active');
         menuOverlay.classList.toggle('active');
       }
-      
       menuToggle.addEventListener('click', toggleMenu);
       menuOverlay.addEventListener('click', toggleMenu);
       
-      // Navegación suave
       document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', function() {
           const sectionId = this.getAttribute('data-section');
@@ -772,10 +736,10 @@
           }
         });
       });
-
+      
       // Fullscreen
       const fullscreenBtn = document.getElementById('fullscreenBtn');
-      fullscreenBtn.addEventListener('click', function() {
+      fullscreenBtn.addEventListener('click', () => {
         if (!document.fullscreenElement) {
           document.documentElement.requestFullscreen();
           fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
@@ -784,54 +748,47 @@
           fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
         }
       });
-
+      
+      // Música
+      const audio = document.getElementById('bgMusic');
+      const playBtn = document.getElementById('playPauseBtn');
+      let isPlaying = false;
+      playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          audio.pause();
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        } else {
+          audio.play().catch(e => console.log('Reproducción requiere interacción'));
+          playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+        isPlaying = !isPlaying;
+      });
+      
       // Mensajes interactivos
       const mensajes = {
         1: { icon: 'fa-heart', text: 'Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.' },
-        2: { icon: 'fa-female', text: 'Tu figura es poesía visual: delgada, estilizada, pero con esas curvas suaves que enamoran a cualquiera. Eres arte.' },
-        3: { icon: 'fa-microphone', text: 'Tu voz es un bálsamo. Suave, melodiosa, capaz de calmar cualquier ansiedad. Podría escucharte por siempre.' },
-        4: { icon: 'fa-star', text: 'Pronto nos encontraremos, lo sé. No hay distancia cuando dos almas están destinadas. Te espero con el corazón abierto.' }
+        2: { icon: 'fa-female', text: 'Tu figura es poesía visual: delgada, estilizada, pero con esas curvas suaves que enamoran a cualquiera.' },
+        3: { icon: 'fa-microphone', text: 'Tu voz es un bálsamo. Suave, melodiosa, capaz de calmar cualquier ansiedad.' },
+        4: { icon: 'fa-star', text: 'Pronto nos encontraremos, lo sé. No hay distancia cuando dos almas están destinadas.' }
       };
-
       const mensajeBtns = document.querySelectorAll('.mensaje-btn');
       const mensajeIcon = document.querySelector('#mensajeDisplay i');
       const mensajeTexto = document.getElementById('mensajeTexto');
-
       mensajeBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           mensajeBtns.forEach(b => b.classList.remove('active'));
           this.classList.add('active');
-          const msgId = this.getAttribute('data-mensaje');
-          const msg = mensajes[msgId];
+          const msg = mensajes[this.dataset.mensaje];
           mensajeIcon.className = `fas ${msg.icon}`;
           mensajeTexto.textContent = msg.text;
         });
       });
-
-      // Verificar si la imagen existe, si no, mostrar placeholder amigable
+      
+      // Fallback imagen
       const foto = document.getElementById('fotoAdriana');
-      foto.addEventListener('error', function() {
-        this.src = 'https://placehold.co/600x800/fdf8f5/d4af37?text=Adriana';
-        this.alt = 'Adriana (foto pendiente)';
+      foto.addEventListener('error', () => {
+        foto.src = 'https://placehold.co/600x800/fdf8f5/d4af37?text=Adriana';
       });
-
-      // Animaciones al scroll (intersección simple)
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.cualidad-card, .poema-card, .timeline-item, .final-mensaje').forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        observer.observe(el);
-      });
-
     })();
   </script>
 </body>

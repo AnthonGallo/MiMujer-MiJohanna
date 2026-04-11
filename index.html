@@ -64,7 +64,9 @@
       letter-spacing: 3px; text-transform: uppercase; color: var(--valentine-red);
       margin-bottom: 40px;
     }
-    .hero { text-align: center; justify-content: center; align-items: center; }
+    .hero {
+      text-align: center; justify-content: center; align-items: center;
+    }
     .hero-title {
       font-family: 'Dancing Script', cursive;
       font-size: clamp(4rem, 15vw, 8rem); font-weight: 700;
@@ -94,9 +96,9 @@
       60%{transform:translateX(-50%) translateY(-5px);}
     }
 
-    /* ══════════════════════════════════════
-       UNIVERSO FINAL — REDISEÑO ÉPICO
-    ══════════════════════════════════════ */
+    /* ═══════════════════════════════
+       UNIVERSO FINAL - REDISEÑADO
+    ═══════════════════════════════ */
     #universo-final {
       position: relative;
       width: 100%;
@@ -105,7 +107,6 @@
       padding: 0;
       display: block;
       overflow: hidden;
-      background: #000;
     }
     #universo-canvas {
       position: absolute;
@@ -113,52 +114,10 @@
       width: 100%; height: 100%;
       display: block;
     }
-
-    /* Capa de frases HTML con perspectiva 3D */
-    .phrases-3d-layer {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 6;
-      pointer-events: none;
-      overflow: hidden;
-      perspective: 600px;
-      perspective-origin: 50% 60%;
-    }
-    .phrase-3d {
-      position: absolute;
-      font-family: 'Dancing Script', cursive;
-      font-weight: 700;
-      white-space: nowrap;
-      pointer-events: none;
-      animation: floatPhrase3D linear infinite;
-      text-shadow: 0 0 15px currentColor, 0 0 30px currentColor;
-    }
-    @keyframes floatPhrase3D {
-      0%   { opacity: 0; transform: translateZ(-200px) translateY(10px); }
-      15%  { opacity: 1; }
-      80%  { opacity: 1; }
-      100% { opacity: 0; transform: translateZ(200px) translateY(-20px); }
-    }
-
-    /* Kawaii sprites — múltiples, dispersos por toda la escena */
-    .kawaii-sprite {
-      position: absolute;
-      z-index: 15;
-      pointer-events: none;
-      animation: kawaiiFloat ease-in-out infinite;
-      image-rendering: crisp-edges;
-      filter: drop-shadow(0 0 8px rgba(255,105,180,0.7));
-    }
-    @keyframes kawaiiFloat {
-      0%,100% { transform: translateY(0) rotate(-2deg) scale(1); }
-      50%      { transform: translateY(-14px) rotate(2deg) scale(1.06); }
-    }
-
-    /* Overlay título centrado */
+    /* Overlay de texto centrado */
     .universe-overlay {
       position: absolute;
-      top: 42%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
@@ -168,25 +127,23 @@
     }
     .universe-title {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(2rem, 6vw, 4.5rem);
-      color: #fff;
-      text-shadow: 0 0 20px #ff69b4, 0 0 50px #ff1493, 0 0 80px rgba(255,20,147,0.4);
+      font-size: clamp(1.8rem, 5vw, 4rem);
+      color: var(--gold-light);
+      text-shadow: 0 0 30px var(--valentine-pink), 0 0 60px rgba(255,105,180,0.5);
       margin-bottom: 8px;
       line-height: 1.2;
     }
     .universe-sub {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(0.6rem, 1.4vw, 0.9rem);
-      letter-spacing: 4px;
-      color: rgba(255,255,255,0.9);
-      text-shadow: 0 0 20px #ff69b4;
-      text-transform: uppercase;
+      font-size: clamp(0.65rem, 1.5vw, 0.95rem);
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 0 20px var(--valentine-red);
     }
-
-    /* Frase inferior rotativa */
+    /* Frase inferior flotante */
     .floating-phrase-bar {
       position: absolute;
-      bottom: 20px;
+      bottom: 24px;
       left: 0; width: 100%;
       z-index: 20;
       display: flex;
@@ -194,60 +151,70 @@
       pointer-events: none;
     }
     .phrase-bubble {
-      background: rgba(100, 0, 50, 0.35);
-      backdrop-filter: blur(16px);
-      padding: clamp(10px,2vw,14px) clamp(24px,5vw,48px);
+      background: rgba(196, 30, 58, 0.25);
+      backdrop-filter: blur(12px);
+      padding: clamp(10px,2vw,16px) clamp(20px,4vw,36px);
       border-radius: 60px;
-      border: 1.5px solid rgba(255,180,210,0.8);
+      border: 1.5px solid rgba(255,215,0,0.7);
       color: white;
-      font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+      font-size: clamp(1rem, 3vw, 1.6rem);
       font-style: italic;
       font-family: 'Dancing Script', cursive;
-      box-shadow: 0 0 30px rgba(255,20,147,0.6), 0 0 60px rgba(255,105,180,0.3);
-      animation: floatBubble 3.5s ease-in-out infinite;
+      box-shadow: 0 0 40px rgba(255,105,180,0.5);
+      animation: floatPhrase 4s ease-in-out infinite;
       max-width: 90%;
-      text-shadow: 0 0 20px #ff69b4;
-      transition: opacity 0.4s;
+      text-shadow: 0 0 15px var(--valentine-pink);
+      transition: opacity 0.3s;
     }
-    @keyframes floatBubble {
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-7px); }
+    @keyframes floatPhrase {
+      0%,100%{ transform: translateY(0); opacity: 0.9; }
+      50%{ transform: translateY(-8px); opacity: 1; }
     }
 
-    /* Texto grande neón inferior (estilo imagen referencia) */
-    .neon-text-bottom {
+    /* ─── frases flotantes en canvas (HTML sobre canvas) ─── */
+    .canvas-phrases {
       position: absolute;
-      bottom: 80px;
-      left: 0; width: 100%;
-      z-index: 8;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 5;
       pointer-events: none;
       overflow: hidden;
     }
-    .neon-marquee {
-      display: flex;
-      gap: 80px;
-      animation: marqueeLeft 18s linear infinite;
-      white-space: nowrap;
-      width: max-content;
-    }
-    .neon-marquee span {
+    .cp-text {
+      position: absolute;
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.6rem, 5vw, 3rem);
       font-weight: 700;
-      color: #ff69b4;
-      text-shadow: 0 0 15px #ff1493, 0 0 35px #ff69b4;
+      white-space: nowrap;
+      animation: orbitText linear infinite;
+      text-shadow: 0 0 12px currentColor;
     }
-    @keyframes marqueeLeft {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    @keyframes orbitText {
+      0%   { transform: translate(0,0) scale(1);   opacity: 0.9; }
+      25%  { transform: translate(5px,-8px) scale(1.04); opacity: 1; }
+      50%  { transform: translate(0,-14px) scale(1);  opacity: 0.9; }
+      75%  { transform: translate(-5px,-8px) scale(0.97); opacity: 1; }
+      100% { transform: translate(0,0) scale(1);   opacity: 0.9; }
     }
 
-    /* Resto de estilos */
+    /* ─── imágenes kawaii orbitando ─── */
+    .kawaii-img {
+      position: absolute;
+      z-index: 15;
+      pointer-events: none;
+      animation: kawaiiFloat ease-in-out infinite;
+      image-rendering: crisp-edges;
+    }
+    @keyframes kawaiiFloat {
+      0%,100% { transform: translateY(0) rotate(-3deg) scale(1); }
+      50%      { transform: translateY(-12px) rotate(3deg) scale(1.05); }
+    }
+
+    /* Resto de estilos originales */
     .foto-marco { max-width: 450px; margin: 40px auto; position: relative; }
     .foto-principal {
       width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover;
       border-radius: 200px 200px 200px 200px / 180px 180px 180px 180px;
-      box-shadow: var(--shadow-soft), 0 0 0 8px rgba(212,175,55,0.1);
+      box-shadow: var(--shadow-soft), 0 0 0 8px rgba(212, 175, 55, 0.1);
       border: 4px solid var(--valentine-pink); transition: transform 0.4s;
       filter: sepia(0.1) contrast(1.05);
     }
@@ -280,7 +247,7 @@
       transform: scale(1.1); box-shadow: 0 0 20px var(--valentine-pink);
     }
     .poema-display {
-      background: rgba(255,240,245,0.85); backdrop-filter: blur(10px);
+      background: rgba(255, 240, 245, 0.85); backdrop-filter: blur(10px);
       padding: 45px; border-radius: 40px; box-shadow: var(--shadow-soft);
       border-left: 10px solid var(--valentine-red);
       min-height: 380px; display: flex; align-items: center;
@@ -382,7 +349,6 @@
       .music-info{display:none;}
       .phrase-bubble{font-size:1rem; padding:10px 20px;}
       #universo-final{height:100svh;}
-      .neon-marquee span{font-size:1.4rem;}
     }
   </style>
 </head>
@@ -455,7 +421,7 @@
       </div>
     </section>
 
-    <!-- POEMA -->
+    <!-- POEMA INTERACTIVO -->
     <section id="poema" class="section">
       <div style="text-align:center;">
         <h2 class="section-title">El Tiempo que me Diste</h2>
@@ -512,40 +478,40 @@
     <footer class="footer"><p>✨ Creado con el corazón para Adriana · San Valentín eterno ✨</p></footer>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       UNIVERSO FINAL — 3D Heart + Kawaii World
-  ══════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════
+       UNIVERSO FINAL - 2D Canvas + HTML
+  ═══════════════════════════════════ -->
   <section id="universo-final">
+    <!-- Canvas 2D para estrellas + "planeta" saturnino -->
     <canvas id="universo-canvas"></canvas>
 
-    <!-- Frases 3D en perspectiva -->
-    <div class="phrases-3d-layer" id="phrases3d"></div>
+    <!-- Frases flotantes HTML sobre el canvas -->
+    <div class="canvas-phrases" id="canvasPhrases"></div>
 
-    <!-- Texto neón tipo marquee inferior (visible en la imagen ref) -->
-    <div class="neon-text-bottom">
-      <div class="neon-marquee" id="neonMarquee"></div>
-    </div>
+    <!-- Imágenes kawaii (1.png–4.png) -->
+    <img src="1.png" class="kawaii-img" id="kw1" alt="">
+    <img src="2.png" class="kawaii-img" id="kw2" alt="">
+    <img src="3.png" class="kawaii-img" id="kw3" alt="">
+    <img src="4.png" class="kawaii-img" id="kw4" alt="">
 
-    <!-- Kawaii sprites — se generarán dinámicamente -->
-    <div id="kawaiiLayer" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:12;pointer-events:none;"></div>
-
-    <!-- Título central -->
+    <!-- Título centrado -->
     <div class="universe-overlay">
       <h2 class="universe-title">❤️ Universo Corazón ❤️</h2>
       <p class="universe-sub">Cada estrella, un latido · cada frase, un susurro</p>
     </div>
 
-    <!-- Frase rotativa inferior -->
+    <!-- Frase inferior -->
     <div class="floating-phrase-bar">
       <div class="phrase-bubble" id="livePhrase">Te Amo!</div>
     </div>
   </section>
 
   <script>
-  /* ─────────────────────────────────────────
+  /* ───────────────────────────────────────────────
      UI: menú, fullscreen, música, poema, mensajes
-  ───────────────────────────────────────── */
+  ─────────────────────────────────────────────── */
   (function(){
+    // Menú
     const menuToggle  = document.getElementById('menuToggle');
     const menuLateral = document.getElementById('menuLateral');
     const menuOverlay = document.getElementById('menuOverlay');
@@ -558,6 +524,8 @@
         if(s){ s.scrollIntoView({behavior:'smooth'}); toggleMenu(); }
       });
     });
+
+    // Fullscreen
     const fsBtn = document.getElementById('fullscreenBtn');
     fsBtn.addEventListener('click', () => {
       if (!document.fullscreenElement){
@@ -568,6 +536,8 @@
         fsBtn.innerHTML='<i class="fas fa-expand"></i>';
       }
     });
+
+    // Música
     const audio   = document.getElementById('bgMusic');
     const playBtn = document.getElementById('playPauseBtn');
     let playing   = false;
@@ -576,6 +546,8 @@
       else { audio.play().catch(()=>{}); playBtn.innerHTML='<i class="fas fa-pause"></i>'; }
       playing = !playing;
     });
+
+    // Mensajes
     const mensajes = {
       1:{ icon:'fa-heart',      text:'Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.' },
       2:{ icon:'fa-female',     text:'Tu figura es poesía visual: delgada, estilizada, pero con esas curvas suaves que enamoran a cualquiera.' },
@@ -591,12 +563,14 @@
         document.getElementById('mensajeTexto').textContent = m.text;
       });
     });
+
+    // Poema
     const estrofas = [
       "I.\nYo, que caminé mil años sin saber lo que era el frío,\nyo, que sostuve una espada mientras los imperios caían,\nyo, que olvidé el sabor de las lágrimas propias\nen el largo pasillo de las noches vacías.\n\nMi nombre era un eco que nadie pronunciaba,\nmi capa, el terciopelo de los ocasos perdidos.\nContaba los siglos como quien cuenta gotas\nen el filo infinito de un destino maldito.\n\nHasta que llegaste tú.",
       "II.\nNo con truenos, no con anuncios de ángeles.\nLlegaste como llega la lluvia al polvo,\ncon ese paso tuyo que no pide permiso,\ncon esa risa que rompe todos mis hechizos.\n\nY de repente, yo, que había visto morir estrellas,\nme encontré temblando ante tus ojos.\nYo, que no necesitaba nada,\nnecesitaba tu mano entre mis manos,\nnecesitaba tu voz diciendo mi nombre\ncomo si fuera la única palabra\nque merece ser dicha en este mundo.",
-      "III.\nTú, mi niña, mi única respuesta.\nTú, que encendiste velas para que yo me quedara,\nque con tus manos frágiles sostuviste\nno una espada, sino mi corazón de piedra\ny lo hiciste latir por primera vez.\n\n¿Qué son mil años frente a una tarde contigo?\n¿Qué es la inmortalidad frente a un beso tuyo?\nYo cambiaba la eternidad entera\npor una noche viendo cómo duermes,\npor una mañana viendo cómo despiertas.",
+      "III.\nTú, mi niña, mi única respuesta.\nTú, que encendiste velas para que yo me quedara,\nque con tus manos frágiles sostuviste\nno una espada, sino mi corazón de piedra\ny lo hiciste latir por primera vez.\n\n¿Qué son mil años frente a una tarde contigo?\n¿Qué es la inmortalidad frente a un beso tuyo?\nYo cambiaba la eternidad entera\npor una noche viendo cómo duermes,\npor una mañana viendo cómo despiertas,\ncon ese desorden de pelo que tanto me gusta,\ncon esa pereza tuya de princesa que no sabe\nque es dueña de un reino más grande que los siglos.",
       "IV.\nPorque tú eres mi única novia,\nmi única muerte, mi única vida.\nLa que me enseñó que el tiempo no se cuenta\nen años, sino en miradas.\nLa que me mostró que el amor no es para siempre,\nes para ahora, es para ti, es para nosotros.\n\nY cuando la lluvia cae sobre esta ciudad,\ncuando el viento trae memorias de otras eras,\nyo solo recuerdo tus manos en mi pecho,\nsolo recuerdo tu risa, solo recuerdo tu nombre.",
-      "V.\nTú, mi niña, mi amor, mi única.\nLa que me hizo mortal solo con quererme.\nLa que me hizo eterno solo con mirarme.\n\nNo necesito más espadas,\nno necesito más siglos.\nSolo necesito tus ojos al despertar,\nsolo necesito tu mano cuando anochece,\nsolo necesito tu voz diciendo 'te quiero'.\n\nPorque antes de ti, yo fui leyenda.\nDespués de ti, soy solo tuyo.\nTe amo, mi niña.\nHoy y siempre.\nEn esta vida y en las nueve que me quedan."
+      "V.\nTú, mi niña, mi amor, mi única.\nLa que me hizo mortal solo con quererme.\nLa que me hizo eterno solo con mirarme.\n\nNo necesito más espadas,\nno necesito más siglos.\nSolo necesito tus ojos al despertar,\nsolo necesito tu mano cuando anochece,\nsolo necesito tu voz diciendo 'te quiero'\nen ese cuarto donde el tiempo se detiene\ny soy, por fin, solo el hombre\nque tiene la suerte de amarte.\n\nPorque antes de ti, yo fui leyenda.\nDespués de ti, soy solo tuyo.\nY no hay inmortalidad más grande\nque esta: ser el dueño de tus sueños,\nser el que te abraza cuando llueve,\nser el que te besa cuando amanece.\n\nTe amo, mi niña.\nHoy y siempre.\nEn esta vida y en las nueve que me quedan."
     ];
     const navDiv   = document.getElementById('estrofaNav');
     const textoDiv = document.getElementById('estrofaTexto');
@@ -622,253 +596,81 @@
     renderEstrofa(0);
     document.getElementById('prevEstrofa').addEventListener('click',()=>{ if(current>0){ current--; renderEstrofa(current); } });
     document.getElementById('nextEstrofa').addEventListener('click',()=>{ if(current<estrofas.length-1){ current++; renderEstrofa(current); } });
+
+    // Fallback foto
     document.getElementById('fotoAdriana').addEventListener('error',function(){ this.src='https://placehold.co/600x800/fdf8f5/d4af37?text=Adriana'; });
   })();
 
 
-  /* ════════════════════════════════════════════════════════
-     UNIVERSO ÉPICO — Corazón 3D + Estrellas + Bloom simulado
-     Técnica: Canvas 2D de alto rendimiento, sin librerías pesadas
-  ════════════════════════════════════════════════════════ */
+  /* ═══════════════════════════════════════════════
+     UNIVERSO 2D — Canvas de alto rendimiento
+     Sin Three.js, sin bloom pesado, 60 fps fluido
+  ═══════════════════════════════════════════════ */
   (function(){
-    const canvas  = document.getElementById('universo-canvas');
-    const ctx     = canvas.getContext('2d');
+    const canvas = document.getElementById('universo-canvas');
+    const ctx    = canvas.getContext('2d');
     const section = document.getElementById('universo-final');
 
+    /* ── Responsive sizing ── */
     let W, H, CX, CY, isMobile;
-
-    /* ── Resize ── */
     function resize(){
-      W = section.offsetWidth;
-      H = section.offsetHeight;
+      W  = section.offsetWidth;
+      H  = section.offsetHeight;
       canvas.width  = W;
       canvas.height = H;
-      CX = W/2;
-      CY = H/2;
+      CX = W/2; CY = H/2;
       isMobile = W < 600;
-      buildKawaii();
+      positionKawaii();
     }
 
-    /* ════════════════════════
-       1. ESTRELLAS DE CAMPO
-       Con perspectiva radial desde el centro
-    ════════════════════════ */
-    const STAR_N = 700;
-    const stars  = [];
+    /* ── Estrellas ── */
+    const STAR_COUNT = 500;
+    const stars = [];
     function makeStars(){
       stars.length = 0;
-      for(let i=0;i<STAR_N;i++){
-        const angle = Math.random()*Math.PI*2;
-        const dist  = Math.pow(Math.random(), 0.6) * Math.max(W,H) * 0.75;
+      for(let i=0;i<STAR_COUNT;i++){
         stars.push({
-          x: CX + Math.cos(angle)*dist,
-          y: CY + Math.sin(angle)*dist,
-          r: Math.random()*1.8+0.3,
-          alpha: Math.random()*0.7+0.3,
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: Math.random()*1.6 + 0.3,
+          alpha: Math.random()*0.6 + 0.3,
+          twinkleSpeed: Math.random()*0.02 + 0.005,
           phase: Math.random()*Math.PI*2,
-          speed: Math.random()*0.025+0.008,
-          color: Math.random()<0.35 ? '#ffaacc' : (Math.random()<0.2 ? '#ffd700' : '#ffffff')
+          color: Math.random()<0.3 ? '#ffaacc' : '#ffffff'
         });
       }
     }
 
-    /* ════════════════════════
-       2. CORAZÓN 3D GIRATORIO
-       Algoritmo paramétrico del corazón con rotación Y (spin)
-    ════════════════════════ */
-    const HEART_POINTS = 900;
-    const heartPts     = [];  // {x,y,z}
-    function makeHeartGeometry(){
-      heartPts.length = 0;
-      for(let i=0;i<HEART_POINTS;i++){
-        // Parametrización 3D corazón: distribución en superficie
-        const u = (Math.random()*2-1);
-        const v = Math.random()*Math.PI*2;
-        // Forma corazón: x=(16sin³t), y=(13cos t−5cos2t−2cos3t−cos4t) escalada
-        const t  = v;
-        const hx = 16*Math.pow(Math.sin(t),3);
-        const hy = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
-        // Añadir profundidad Z
-        const hz  = u * 5;
-        const radius = 0.85 + u*0.15; // leve variación de radio
-        heartPts.push({
-          x: hx * radius,
-          y: hy * radius,
-          z: hz,
-          color: Math.random()<0.5 ? '#ff69b4' : (Math.random()<0.5 ? '#ff1493' : '#ff4d94'),
-          size:  Math.random()*2.2+0.8,
-          phase: Math.random()*Math.PI*2
-        });
-      }
-    }
-
-    /* Bloom simulado: dibuja el corazón con múltiples pasadas borrosas */
-    function drawHeart3D(t){
-      const spinAngle = t * 0.4;  // rotación Y lenta
-      const cosA = Math.cos(spinAngle);
-      const sinA = Math.sin(spinAngle);
-      const scale = isMobile ? Math.min(W,H)*0.018 : Math.min(W,H)*0.022;
-      const ox    = CX;
-      const oy    = isMobile ? CY*0.48 : CY*0.44;
-
-      // Pasada de bloom (glow más grande, muy translúcido)
-      for(let pass=0;pass<2;pass++){
-        const bloomR  = pass===0 ? 4 : 2;
-        const bloomA  = pass===0 ? 0.07 : 0.12;
-        for(const p of heartPts){
-          // Rotación Y: x' = x*cos - z*sin, z' = x*sin + z*cos
-          const px3 = p.x*cosA - p.z*sinA;
-          const pz3 = p.x*sinA + p.z*cosA;
-          const depth = (pz3+6)/12;  // 0..1
-          const sx = ox + px3*scale;
-          const sy = oy + p.y*scale;
-          const a  = bloomA * depth * (0.7+0.3*Math.sin(t*1.5+p.phase));
-          ctx.save();
-          ctx.globalAlpha = a;
-          ctx.fillStyle   = p.color;
-          ctx.shadowColor = p.color;
-          ctx.shadowBlur  = bloomR*3;
-          ctx.beginPath();
-          ctx.arc(sx, sy, p.size+bloomR, 0, Math.PI*2);
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      // Pasada nítida principal (ordenada por Z para pseudo-3D)
-      const sorted = heartPts.slice().sort((a,b)=>{
-        const za = a.x*sinA + a.z*cosA;
-        const zb = b.x*sinA + b.z*cosA;
-        return za - zb;
-      });
-      for(const p of sorted){
-        const px3  = p.x*cosA - p.z*sinA;
-        const pz3  = p.x*sinA + p.z*cosA;
-        const depth= (pz3+6)/12;
-        const sx   = ox + px3*scale;
-        const sy   = oy + p.y*scale;
-        const a    = (0.55+0.45*depth) * (0.8+0.2*Math.sin(t*2+p.phase));
-        ctx.save();
-        ctx.globalAlpha = a;
-        ctx.fillStyle   = p.color;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur  = 8*depth;
-        ctx.beginPath();
-        ctx.arc(sx, sy, p.size*depth*0.7+0.5, 0, Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    /* ════════════════════════
-       3. PLANETA SATURNINO
-       En el centro del corazón
-    ════════════════════════ */
-    function drawPlanet(t){
-      const px = CX;
-      const py = isMobile ? CY*0.48 : CY*0.44;
-      const pr = isMobile ? W*0.08 : Math.min(W,H)*0.09;
-
-      // Cuerpo planeta
-      const grad = ctx.createRadialGradient(px-pr*0.3, py-pr*0.25, pr*0.05, px, py, pr);
-      grad.addColorStop(0,'#ff80a0');
-      grad.addColorStop(0.4,'#c41e3a');
-      grad.addColorStop(0.8,'#7a0020');
-      grad.addColorStop(1,'#3a000c');
-      ctx.save();
-      ctx.shadowColor = '#ff1493';
-      ctx.shadowBlur  = 50;
-      ctx.beginPath();
-      ctx.arc(px, py, pr, 0, Math.PI*2);
-      ctx.fillStyle = grad;
-      ctx.fill();
-      ctx.restore();
-
-      // Brillo interno
-      const inner = ctx.createRadialGradient(px-pr*0.2, py-pr*0.2, 1, px, py, pr*0.6);
-      inner.addColorStop(0,'rgba(255,180,200,0.5)');
-      inner.addColorStop(1,'rgba(255,180,200,0)');
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(px, py, pr, 0, Math.PI*2);
-      ctx.fillStyle = inner;
-      ctx.fill();
-      ctx.restore();
-
-      // Anillo inferior (delante del planeta)
-      const rx = pr*2.4, ry = pr*0.38;
-      const ringG = ctx.createLinearGradient(px-rx,py,px+rx,py);
-      ringG.addColorStop(0,'rgba(255,100,170,0)');
-      ringG.addColorStop(0.2,'rgba(255,20,147,0.95)');
-      ringG.addColorStop(0.5,'rgba(255,150,200,1)');
-      ringG.addColorStop(0.8,'rgba(255,20,147,0.95)');
-      ringG.addColorStop(1,'rgba(255,100,170,0)');
-      ctx.save();
-      ctx.shadowColor = '#ff69b4';
-      ctx.shadowBlur  = 30;
-      ctx.beginPath();
-      ctx.ellipse(px, py, rx, ry, 0, 0, Math.PI);
-      ctx.lineWidth   = isMobile ? 7 : 12;
-      ctx.strokeStyle = ringG;
-      ctx.stroke();
-      ctx.restore();
-
-      // Anillo superior (detrás)
-      ctx.save();
-      ctx.globalAlpha = 0.5;
-      ctx.shadowColor = '#ff69b4';
-      ctx.shadowBlur  = 20;
-      ctx.beginPath();
-      ctx.ellipse(px, py, rx, ry, 0, Math.PI, Math.PI*2);
-      ctx.lineWidth   = isMobile ? 5 : 9;
-      ctx.strokeStyle = ringG;
-      ctx.stroke();
-      ctx.restore();
-
-      // Partículas en la superficie
-      for(let i=0;i<6;i++){
-        const a  = (i/6)*Math.PI*2 + t*0.8;
-        const sr = pr*(0.4+0.5*Math.abs(Math.sin(t+i*1.1)));
-        const sx = px + Math.cos(a)*sr;
-        const sy = py + Math.sin(a)*sr*0.55;
-        ctx.save();
-        ctx.globalAlpha = 0.35+0.3*Math.abs(Math.sin(t*2+i));
-        ctx.fillStyle   = '#fff';
-        ctx.shadowColor = '#fff';
-        ctx.shadowBlur  = 6;
-        ctx.beginPath();
-        ctx.arc(sx, sy, 1.4, 0, Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    /* ════════════════════════
-       4. CORAZONES VOLADORES
-    ════════════════════════ */
-    const FLOAT_HEARTS = 22;
-    const fHearts = [];
-    function spawnFHeart(){
+    /* ── Corazones voladores ── */
+    const HEART_COUNT = 18;
+    const floatHearts = [];
+    function spawnHeart(){
       return {
-        x: Math.random()*W, y: H+20,
-        size:  Math.random()*(isMobile?10:16)+5,
-        speed: Math.random()*0.7+0.25,
-        drift: (Math.random()-0.5)*0.5,
-        alpha: Math.random()*0.55+0.35,
-        color: Math.random()<0.6?'#ff69b4':'#ff1493'
+        x: Math.random()*W,
+        y: H + 20,
+        size: Math.random()*(isMobile?10:18)+6,
+        speed: Math.random()*0.6+0.3,
+        drift: (Math.random()-0.5)*0.4,
+        alpha: Math.random()*0.5+0.4,
+        color: Math.random()<0.5?'#ff69b4':'#ff1493'
       };
     }
-    function makeFHearts(){
-      fHearts.length=0;
-      for(let i=0;i<FLOAT_HEARTS;i++){ const h=spawnFHeart(); h.y=Math.random()*H; fHearts.push(h); }
+    function makeHearts(){
+      floatHearts.length=0;
+      for(let i=0;i<HEART_COUNT;i++){
+        const h=spawnHeart();
+        h.y=Math.random()*H; // distribuidos al inicio
+        floatHearts.push(h);
+      }
     }
-    function drawFHeart(x,y,s,c,a){
+    function drawHeart(x,y,size,color,alpha){
       ctx.save();
-      ctx.globalAlpha = a;
-      ctx.fillStyle   = c;
-      ctx.shadowColor = c;
-      ctx.shadowBlur  = 14;
+      ctx.globalAlpha=alpha;
+      ctx.fillStyle=color;
+      ctx.shadowColor=color;
+      ctx.shadowBlur=12;
       ctx.beginPath();
+      const s=size;
       ctx.moveTo(x,y-s*0.25);
       ctx.bezierCurveTo(x,y-s*0.7, x-s,y-s*0.7, x-s,y-s*0.25);
       ctx.bezierCurveTo(x-s,y+s*0.1, x,y+s*0.5, x,y+s*0.5);
@@ -878,229 +680,235 @@
       ctx.restore();
     }
 
-    /* ════════════════════════
-       5. PARTÍCULAS SPARKLE
-    ════════════════════════ */
-    const sparkles=[];
-    function makeSparkles(){
-      sparkles.length=0;
-      for(let i=0;i<180;i++){
-        sparkles.push({
-          x:Math.random()*W, y:Math.random()*H,
-          r:Math.random()*2.5+0.5,
-          speed:Math.random()*0.4+0.1,
-          alpha:Math.random()
-        });
+    /* ── "Planeta" tipo Saturno (círculo + anillo) en el centro ── */
+    function drawPlanet(t){
+      const px = CX, py = isMobile ? CY*0.55 : CY*0.52;
+      const pr = isMobile ? W*0.12 : Math.min(W,H)*0.13;
+
+      // Cuerpo
+      const grad = ctx.createRadialGradient(px-pr*0.3, py-pr*0.3, pr*0.05, px, py, pr);
+      grad.addColorStop(0,'#ff4488');
+      grad.addColorStop(0.5,'#c41e3a');
+      grad.addColorStop(1,'#6b0020');
+      ctx.save();
+      ctx.shadowColor='#ff1493';
+      ctx.shadowBlur=40;
+      ctx.beginPath();
+      ctx.arc(px,py,pr,0,Math.PI*2);
+      ctx.fillStyle=grad;
+      ctx.fill();
+      ctx.restore();
+
+      // Anillo brillante
+      const rx = pr*2.1, ry = pr*0.36;
+      const ringGrad = ctx.createLinearGradient(px-rx,py,px+rx,py);
+      ringGrad.addColorStop(0,'rgba(255,105,180,0)');
+      ringGrad.addColorStop(0.25,'rgba(255,20,147,0.9)');
+      ringGrad.addColorStop(0.5,'rgba(255,105,180,1)');
+      ringGrad.addColorStop(0.75,'rgba(255,20,147,0.9)');
+      ringGrad.addColorStop(1,'rgba(255,105,180,0)');
+
+      ctx.save();
+      ctx.shadowColor='#ff69b4';
+      ctx.shadowBlur=25;
+      // Zona debajo del planeta (para que el anillo pase "detrás")
+      ctx.beginPath();
+      ctx.ellipse(px,py,rx,ry,0,0,Math.PI); // mitad inferior → va delante del planeta
+      ctx.lineWidth=isMobile?6:10;
+      ctx.strokeStyle=ringGrad;
+      ctx.stroke();
+      ctx.restore();
+
+      // Parte superior del anillo (detrás del planeta) — ligeramente más tenue
+      ctx.save();
+      ctx.globalAlpha=0.55;
+      ctx.shadowColor='#ff69b4';
+      ctx.shadowBlur=20;
+      ctx.beginPath();
+      ctx.ellipse(px,py,rx,ry,0,Math.PI,Math.PI*2);
+      ctx.lineWidth=isMobile?5:8;
+      ctx.strokeStyle=ringGrad;
+      ctx.stroke();
+      ctx.restore();
+
+      // Destellos sobre el planeta
+      const nSparkles=8;
+      for(let i=0;i<nSparkles;i++){
+        const angle=(i/nSparkles)*Math.PI*2 + t*0.5;
+        const rr = pr*(0.3+0.7*Math.random());
+        const sx = px + Math.cos(angle)*rr;
+        const sy = py + Math.sin(angle)*rr*0.6;
+        const sa = 0.4+0.6*Math.abs(Math.sin(t*2+i));
+        ctx.save();
+        ctx.globalAlpha=sa*0.6;
+        ctx.fillStyle='#ffffff';
+        ctx.shadowColor='#ffffff';
+        ctx.shadowBlur=8;
+        ctx.beginPath();
+        ctx.arc(sx,sy,1.2,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
       }
     }
 
-    /* ════════════════════════
-       6. FRASES 3D HTML
-    ════════════════════════ */
-    const PHRASES_ALL = [
+    /* ── Partículas de brillo tipo campo estelar ── */
+    const sparkles=[];
+    function makeSparkles(){
+      sparkles.length=0;
+      for(let i=0;i<120;i++){
+        sparkles.push({x:Math.random()*W, y:Math.random()*H, r:Math.random()*2+0.5, speed:Math.random()*0.3+0.1, alpha:Math.random()});
+      }
+    }
+
+    /* ── Frases HTML flotantes ── */
+    const PHRASES = [
       {text:"Mi media naranja",   color:"#ff69b4"},
       {text:"Un beso para ti",    color:"#ffd700"},
-      {text:"Siempre contigo",    color:"#ff80c0"},
+      {text:"Siempre contigo",    color:"#ff69b4"},
       {text:"Eres mi corazón",    color:"#ff1493"},
       {text:"Amor verdadero",     color:"#ffd700"},
       {text:"Te quiero sin fin",  color:"#ff69b4"},
       {text:"14 de Febrero",      color:"#ffd700"},
       {text:"Solo tú y yo",       color:"#ff1493"},
-      {text:"Contigo lo es todo", color:"#ff80c0"},
+      {text:"Contigo lo es todo", color:"#ff69b4"},
       {text:"Mi amor eterno",     color:"#ffd700"},
       {text:"Para siempre",       color:"#ff69b4"},
-      {text:"Cada latido eres tú",color:"#ff1493"},
-      {text:"Eres mi universo",   color:"#ff80c0"},
-      {text:"Te amo hoy y siempre",color:"#ffd700"},
-      {text:"Feliz San Valentín", color:"#ff69b4"},
-      {text:"Eres todo para mí",  color:"#ff1493"},
     ];
-    const phrasesLayer = document.getElementById('phrases3d');
+    const phrasesContainer = document.getElementById('canvasPhrases');
 
-    function buildPhrases3D(){
-      phrasesLayer.innerHTML='';
-      PHRASES_ALL.forEach((p,i)=>{
-        const el  = document.createElement('div');
-        el.className='phrase-3d';
-        const dur = 5+Math.random()*6;
-        const fs  = isMobile ? (0.75+Math.random()*0.5)+'rem' : (0.9+Math.random()*0.7)+'rem';
+    function buildPhraseEls(){
+      phrasesContainer.innerHTML='';
+      PHRASES.forEach((p,i)=>{
+        const el=document.createElement('div');
+        el.className='cp-text';
+        el.textContent=p.text;
+        const fs = isMobile ? (0.7+Math.random()*0.5)+'rem' : (0.85+Math.random()*0.6)+'rem';
         el.style.cssText=`
           color:${p.color};
           font-size:${fs};
-          left:${3+Math.random()*88}%;
-          top:${5+Math.random()*75}%;
-          animation-duration:${dur}s;
-          animation-delay:${-Math.random()*dur}s;
+          left:${5+Math.random()*85}%;
+          top:${5+Math.random()*80}%;
+          animation-duration:${3+Math.random()*3}s;
+          animation-delay:${-Math.random()*4}s;
+          opacity:0.85;
         `;
-        el.textContent = p.text;
-        phrasesLayer.appendChild(el);
+        phrasesContainer.appendChild(el);
       });
     }
 
-    /* ════════════════════════
-       7. MARQUEE NEÓN INFERIOR
-    ════════════════════════ */
-    function buildNeonMarquee(){
-      const texts = [
-        "Te amo hoy y siempre","Mi amor eterno","Contigo lo es todo",
-        "Solo tú y yo","Eres mi universo","Para siempre amor",
-        "Te amo hoy y siempre","Mi amor eterno","Contigo lo es todo",
-        "Solo tú y yo","Eres mi universo","Para siempre amor"
-      ];
-      const m = document.getElementById('neonMarquee');
-      m.innerHTML='';
-      texts.forEach(t=>{
-        const s=document.createElement('span');
-        s.textContent=t;
-        m.appendChild(s);
+    /* ── Kawaii images positioning ── */
+    function positionKawaii(){
+      const imgs=['kw1','kw2','kw3','kw4'];
+      const positions = isMobile
+        ? [{l:'2%', t:'8%'},{r:'2%',t:'8%'},{l:'2%',b:'12%'},{r:'2%',b:'12%'}]
+        : [{l:'2%',t:'12%'},{r:'2%',t:'12%'},{l:'2%',b:'18%'},{r:'2%',b:'18%'}];
+      const sz = isMobile ? '80px' : '130px';
+      imgs.forEach((id,i)=>{
+        const el=document.getElementById(id);
+        if(!el) return;
+        el.style.width=sz;
+        el.style.height='auto';
+        el.style.left  = positions[i].l||'';
+        el.style.right = positions[i].r||'';
+        el.style.top   = positions[i].t||'';
+        el.style.bottom= positions[i].b||'';
+        el.style.animationDuration=(3+i*0.7)+'s';
+        el.style.animationDelay=(-i*0.5)+'s';
+        // On error: hide gracefully
+        el.onerror=()=>{ el.style.display='none'; };
       });
     }
 
-    /* ════════════════════════
-       8. KAWAII SPRITES
-       Múltiples instancias de 1.png-4.png distribuidas por toda la pantalla
-    ════════════════════════ */
-    function buildKawaii(){
-      const layer = document.getElementById('kawaiiLayer');
-      layer.innerHTML='';
-      const sources = ['1.png','2.png','3.png','4.png'];
-      // En desktop ~18 sprites, en mobile ~10
-      const count = isMobile ? 10 : 18;
-      const sz    = isMobile ? 65 : 110;
-
-      for(let i=0;i<count;i++){
-        const img = document.createElement('img');
-        img.src   = sources[i%4];
-        img.className = 'kawaii-sprite';
-        // Distribución: evitar el centro exacto (ocupado por el planeta/corazón)
-        let lx, ly;
-        do {
-          lx = 2 + Math.random()*90;
-          ly = 2 + Math.random()*88;
-        } while(lx>30 && lx<70 && ly>15 && ly<70); // evitar zona central
-        img.style.cssText=`
-          left:${lx}%;
-          top:${ly}%;
-          width:${sz + Math.floor(Math.random()*30)}px;
-          height:auto;
-          animation-duration:${2.5+Math.random()*2.5}s;
-          animation-delay:${-Math.random()*3}s;
-          opacity:0.92;
-        `;
-        img.onerror = ()=>{ img.style.display='none'; };
-        layer.appendChild(img);
-      }
-    }
-
-    /* ════════════════════════
-       9. FRASE INFERIOR ROTATIVA
-    ════════════════════════ */
-    const liveEl    = document.getElementById('livePhrase');
-    const livePhrases=[
-      "Te Amo!","Mi Amor","Cada latido es para ti","Contigo lo es todo",
-      "Mi amor eterno","Eres mi universo","Solo tú y yo",
-      "Para siempre, amor","Eres todo lo que necesito"
-    ];
-    let liveIdx=0;
+    /* ── Frase inferior rotativa ── */
+    const liveEl=document.getElementById('livePhrase');
+    const phrasesLive=["Te Amo!","Mi Amor","Cada latido es para ti","Contigo lo es todo","Mi amor eterno","Eres mi universo","Solo tú y yo","Para siempre, amor"];
+    let idx=0;
     setInterval(()=>{
-      liveIdx=(liveIdx+1)%livePhrases.length;
+      idx=(idx+1)%phrasesLive.length;
       liveEl.style.opacity='0';
-      setTimeout(()=>{ liveEl.textContent=livePhrases[liveIdx]; liveEl.style.opacity='1'; },400);
+      setTimeout(()=>{ liveEl.textContent=phrasesLive[idx]; liveEl.style.opacity='1'; },350);
     },4000);
 
-    /* ════════════════════════
-       LOOP PRINCIPAL — 60fps
-    ════════════════════════ */
-    let raf=null;
+    /* ── LOOP de animación ── */
+    let raf, lastT=0;
     function draw(ts){
-      const t=ts*0.001;
+      const t = ts*0.001;
       ctx.clearRect(0,0,W,H);
 
-      // Fondo negro-profundo con degradado radial
-      const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*0.8);
-      bg.addColorStop(0,'#1a000d');
-      bg.addColorStop(0.4,'#0d0006');
-      bg.addColorStop(1,'#040002');
+      // Fondo degradado oscuro
+      const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*0.75);
+      bg.addColorStop(0,'#2d0018');
+      bg.addColorStop(0.5,'#140009');
+      bg.addColorStop(1,'#080005');
       ctx.fillStyle=bg;
-      ctx.fillRect(0,0,W,H);
-
-      // Halo central suave (simula bloom global)
-      const halo=ctx.createRadialGradient(CX,CY*0.9,0,CX,CY*0.9,Math.min(W,H)*0.5);
-      halo.addColorStop(0,'rgba(180,0,80,0.18)');
-      halo.addColorStop(0.5,'rgba(180,0,80,0.06)');
-      halo.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=halo;
       ctx.fillRect(0,0,W,H);
 
       // Estrellas
       for(const s of stars){
-        const a=s.alpha*(0.55+0.45*Math.sin(t*s.speed*50+s.phase));
+        const a=s.alpha*(0.6+0.4*Math.sin(t*s.twinkleSpeed*60+s.phase));
         ctx.save();
         ctx.globalAlpha=a;
         ctx.fillStyle=s.color;
-        ctx.shadowColor=s.color==='#ffffff'?'transparent':s.color;
-        ctx.shadowBlur=s.color==='#ffffff'?0:8;
+        ctx.shadowColor=s.color;
+        ctx.shadowBlur=s.color==='#ffffff'?0:6;
         ctx.beginPath();
         ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
         ctx.fill();
         ctx.restore();
       }
 
-      // Sparkles ascendentes
+      // Partículas brillantes
       for(const sp of sparkles){
         sp.y-=sp.speed;
-        if(sp.y<-5){ sp.y=H+5; sp.x=Math.random()*W; }
+        if(sp.y<0){ sp.y=H; sp.x=Math.random()*W; }
         ctx.save();
-        ctx.globalAlpha=0.25+0.35*Math.abs(Math.sin(t*sp.speed*12+sp.x));
-        ctx.fillStyle='#ffddee';
+        ctx.globalAlpha=0.3+0.4*Math.abs(Math.sin(t*sp.speed*10+sp.x));
+        ctx.fillStyle='#ffccee';
         ctx.beginPath();
-        ctx.arc(sp.x,sp.y,sp.r*0.65,0,Math.PI*2);
+        ctx.arc(sp.x,sp.y,sp.r*0.7,0,Math.PI*2);
         ctx.fill();
         ctx.restore();
       }
 
-      // Corazón 3D giratorio (bloom + puntos)
-      drawHeart3D(t);
-
-      // Planeta saturno (encima del corazón, en el centro)
+      // Planeta tipo Saturno
       drawPlanet(t);
 
       // Corazones flotantes
-      for(const h of fHearts){
-        h.y-=h.speed;
-        h.x+=h.drift;
-        if(h.y<-30) Object.assign(h,spawnFHeart());
-        drawFHeart(h.x,h.y,h.size,h.color,h.alpha);
+      for(const h of floatHearts){
+        h.y -= h.speed;
+        h.x += h.drift;
+        if(h.y < -30){ Object.assign(h, spawnHeart()); }
+        drawHeart(h.x, h.y, h.size, h.color, h.alpha);
       }
 
       raf=requestAnimationFrame(draw);
     }
 
-    /* Intersection Observer */
+    /* ── Intersection Observer: activar solo cuando sea visible ── */
     const observer=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
-        if(e.isIntersecting){ if(!raf) raf=requestAnimationFrame(draw); }
-        else { if(raf){ cancelAnimationFrame(raf); raf=null; } }
+        if(e.isIntersecting){
+          if(!raf) raf=requestAnimationFrame(draw);
+        } else {
+          if(raf){ cancelAnimationFrame(raf); raf=null; }
+        }
       });
-    },{threshold:0.05});
+    },{threshold:0.1});
     observer.observe(section);
 
-    /* Init */
+    /* ── Init ── */
     resize();
     makeStars();
-    makeHeartGeometry();
-    makeFHearts();
+    makeHearts();
     makeSparkles();
-    buildPhrases3D();
-    buildNeonMarquee();
+    buildPhraseEls();
 
     window.addEventListener('resize',()=>{
       resize();
       makeStars();
-      makeHeartGeometry();
-      makeFHearts();
+      makeHearts();
       makeSparkles();
-      buildPhrases3D();
+      buildPhraseEls();
     });
   })();
   </script>

@@ -4,913 +4,1196 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Adriana · Universo San Valentín</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --valentine-red: #c41e3a;
-      --valentine-pink: #ff69b4;
-      --valentine-soft: #ffe4e1;
+      --gold-light: #f5e6a3;
+      --rose: #c41e3a;
+      --pink: #ff69b4;
+      --hot-pink: #ff1493;
+      --soft-pink: #ffe4f0;
       --cream: #fdf8f5;
-      --esmerald: #3d5a5c;
-      --text-dark: #2c2c2c;
-      --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --deep: #0a0005;
+      --text-dark: #2c1a1a;
+      --shadow: 0 20px 60px -10px rgba(196,30,58,0.25);
+      --glow-pink: 0 0 30px rgba(255,105,180,0.6), 0 0 60px rgba(255,105,180,0.3);
+      --glow-gold: 0 0 20px rgba(212,175,55,0.5), 0 0 40px rgba(212,175,55,0.2);
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Cormorant Garamond', serif;
-      background-color: var(--cream);
+      background: var(--cream);
       color: var(--text-dark);
       line-height: 1.7;
       overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 5;
-    }
-    .section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 100px 0 60px;
-      position: relative;
-    }
-    .section-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(3rem, 10vw, 5.5rem);
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 24px;
-      line-height: 1.2;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
-      position: relative;
-      display: inline-block;
-    }
-    .section-title::after {
-      content: ''; position: absolute; bottom: -8px; left: 0;
-      width: 60%; height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--valentine-red));
-      border-radius: 3px;
-    }
-    .section-subtitle {
-      font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 1.2rem;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--valentine-red);
-      margin-bottom: 40px;
-    }
-    .hero {
-      text-align: center; justify-content: center; align-items: center;
-    }
-    .hero-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(4rem, 15vw, 8rem); font-weight: 700;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--valentine-red) 50%, var(--valentine-pink) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      margin-bottom: 24px; line-height: 1.1;
-      animation: fadeInUp 1.2s ease;
-    }
-    .hero-quote {
-      font-size: clamp(1.2rem, 4vw, 1.8rem); font-style: italic; color: #4a4a4a;
-      max-width: 800px; margin: 0 auto 40px;
-      animation: fadeInUp 1.2s ease 0.2s both;
-    }
-    .scroll-indicator {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; color: var(--gold);
-      font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;
-      animation: bounce 2s infinite;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-      0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0);}
-      40%{transform:translateX(-50%) translateY(-10px);}
-      60%{transform:translateX(-50%) translateY(-5px);}
     }
 
-    /* ═══════════════════════════════
-       UNIVERSO FINAL - REDISEÑADO
-    ═══════════════════════════════ */
-    #universo-final {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      min-height: 600px;
-      padding: 0;
-      display: block;
-      overflow: hidden;
+    /* ══════════════════ NAV ══════════════════ */
+    .nav-fixed {
+      position: fixed; top: 20px; right: 20px; z-index: 2000;
+      display: flex; gap: 10px;
     }
-    #universo-canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: block;
-    }
-    /* Overlay de texto centrado */
-    .universe-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      text-align: center;
-      pointer-events: none;
-      width: 90%;
-    }
-    .universe-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.8rem, 5vw, 4rem);
-      color: var(--gold-light);
-      text-shadow: 0 0 30px var(--valentine-pink), 0 0 60px rgba(255,105,180,0.5);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .universe-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(0.65rem, 1.5vw, 0.95rem);
-      letter-spacing: 3px;
-      color: rgba(255,255,255,0.85);
-      text-shadow: 0 0 20px var(--valentine-red);
-    }
-    /* Frase inferior flotante */
-    .floating-phrase-bar {
-      position: absolute;
-      bottom: 24px;
-      left: 0; width: 100%;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-    }
-    .phrase-bubble {
-      background: rgba(196, 30, 58, 0.25);
-      backdrop-filter: blur(12px);
-      padding: clamp(10px,2vw,16px) clamp(20px,4vw,36px);
-      border-radius: 60px;
-      border: 1.5px solid rgba(255,215,0,0.7);
-      color: white;
-      font-size: clamp(1rem, 3vw, 1.6rem);
-      font-style: italic;
-      font-family: 'Dancing Script', cursive;
-      box-shadow: 0 0 40px rgba(255,105,180,0.5);
-      animation: floatPhrase 4s ease-in-out infinite;
-      max-width: 90%;
-      text-shadow: 0 0 15px var(--valentine-pink);
-      transition: opacity 0.3s;
-    }
-    @keyframes floatPhrase {
-      0%,100%{ transform: translateY(0); opacity: 0.9; }
-      50%{ transform: translateY(-8px); opacity: 1; }
-    }
-
-    /* ─── frases flotantes en canvas (HTML sobre canvas) ─── */
-    .canvas-phrases {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 5;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .cp-text {
-      position: absolute;
-      font-family: 'Dancing Script', cursive;
-      font-weight: 700;
-      white-space: nowrap;
-      animation: orbitText linear infinite;
-      text-shadow: 0 0 12px currentColor;
-    }
-    @keyframes orbitText {
-      0%   { transform: translate(0,0) scale(1);   opacity: 0.9; }
-      25%  { transform: translate(5px,-8px) scale(1.04); opacity: 1; }
-      50%  { transform: translate(0,-14px) scale(1);  opacity: 0.9; }
-      75%  { transform: translate(-5px,-8px) scale(0.97); opacity: 1; }
-      100% { transform: translate(0,0) scale(1);   opacity: 0.9; }
-    }
-
-    /* ─── imágenes kawaii orbitando ─── */
-    .kawaii-img {
-      position: absolute;
-      z-index: 15;
-      pointer-events: none;
-      animation: kawaiiFloat ease-in-out infinite;
-      image-rendering: crisp-edges;
-    }
-    @keyframes kawaiiFloat {
-      0%,100% { transform: translateY(0) rotate(-3deg) scale(1); }
-      50%      { transform: translateY(-12px) rotate(3deg) scale(1.05); }
-    }
-
-    /* Resto de estilos originales */
-    .foto-marco { max-width: 450px; margin: 40px auto; position: relative; }
-    .foto-principal {
-      width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover;
-      border-radius: 200px 200px 200px 200px / 180px 180px 180px 180px;
-      box-shadow: var(--shadow-soft), 0 0 0 8px rgba(212, 175, 55, 0.1);
-      border: 4px solid var(--valentine-pink); transition: transform 0.4s;
-      filter: sepia(0.1) contrast(1.05);
-    }
-    .foto-caption {
-      text-align: center; margin-top: 20px;
-      font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--valentine-red);
-    }
-    .cualidades-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 30px; margin: 40px 0;
-    }
-    .cualidad-card {
-      background: rgba(255,255,255,0.7); backdrop-filter: blur(10px);
-      padding: 36px 24px; border-radius: 24px; box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(212,175,55,0.15); transition: all 0.3s; text-align: center;
-    }
-    .cualidad-card:hover { transform: translateY(-8px); border-color: var(--valentine-pink); }
-    .cualidad-icon { font-size: 2.8rem; color: var(--valentine-red); margin-bottom: 20px; }
-    .cualidad-titulo { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--valentine-red); }
-    .poema-interactivo { max-width: 900px; margin: 0 auto; }
-    .estrofa-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
-    .estrofa-btn {
-      background: transparent; border: 2px solid var(--gold); color: var(--text-dark);
-      width: 50px; height: 50px; border-radius: 50%; font-size: 1.2rem; font-weight: bold;
-      cursor: pointer; transition: all 0.3s; font-family: 'Montserrat', sans-serif;
+    .nav-btn {
+      background: rgba(253,248,245,0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212,175,55,0.3);
+      width: 46px; height: 46px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-dark); font-size: 1.1rem;
+      transition: all 0.3s; box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-    .estrofa-btn:hover, .estrofa-btn.active {
-      background: var(--valentine-red); border-color: var(--valentine-red); color: white;
-      transform: scale(1.1); box-shadow: 0 0 20px var(--valentine-pink);
+    .nav-btn:hover { background: var(--rose); color: #fff; transform: scale(1.08); }
+    .menu-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(6px); z-index: 1500;
+      opacity: 0; visibility: hidden; transition: 0.3s;
     }
-    .poema-display {
-      background: rgba(255, 240, 245, 0.85); backdrop-filter: blur(10px);
-      padding: 45px; border-radius: 40px; box-shadow: var(--shadow-soft);
-      border-left: 10px solid var(--valentine-red);
-      min-height: 380px; display: flex; align-items: center;
-      transition: opacity 0.4s;
+    .menu-overlay.active { opacity: 1; visibility: visible; }
+    .menu-drawer {
+      position: fixed; top: 0; right: -310px; width: 290px; height: 100vh;
+      background: rgba(253,248,245,0.97); backdrop-filter: blur(24px);
+      z-index: 1600; padding: 80px 20px 24px;
+      transition: right 0.45s cubic-bezier(.4,0,.2,1);
+      border-left: 1px solid rgba(212,175,55,0.25);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.1);
+      overflow-y: auto;
     }
-    .estrofa-texto { font-size: 1.3rem; line-height: 1.9; font-style: italic; white-space: pre-line; width: 100%; }
-    .poema-controls { display: flex; justify-content: space-between; margin-top: 20px; }
-    .poema-arrow { background: none; border: none; font-size: 2rem; color: var(--valentine-red); cursor: pointer; transition: 0.3s; padding: 10px; }
-    .poema-arrow:hover { color: var(--gold); transform: scale(1.2); }
-    .timeline { position: relative; max-width: 800px; margin: 60px auto; }
-    .timeline::before {
-      content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(to bottom, var(--gold), var(--valentine-red), var(--valentine-pink));
+    .menu-drawer.active { right: 0; }
+    .menu-drawer-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem; color: var(--rose);
+      text-align: center; margin-bottom: 28px;
     }
-    .timeline-item { position: relative; padding-left: 80px; margin-bottom: 50px; }
-    .timeline-dot {
-      position: absolute; left: 22px; top: 5px; width: 18px; height: 18px;
-      border-radius: 50%; background: var(--valentine-red); border: 3px solid white;
-      box-shadow: 0 0 0 4px rgba(196,30,58,0.3);
+    .menu-item {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; padding: 13px 18px; margin-bottom: 8px;
+      background: transparent; border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 50px; color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif; font-size: 0.82rem;
+      letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+      transition: all 0.3s; text-align: left;
     }
-    .timeline-content { background: white; padding: 24px 28px; border-radius: 20px; box-shadow: var(--shadow-soft); font-size: 1.1rem; }
-    .mensajes-selector { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 40px 0; }
-    .mensaje-btn {
-      background: transparent; border: 1.5px solid var(--valentine-red); padding: 12px 28px;
-      border-radius: 40px; font-family: 'Montserrat',sans-serif; cursor: pointer; transition: all 0.3s;
-    }
-    .mensaje-btn:hover, .mensaje-btn.active {
-      background: var(--valentine-red); color: white; transform: translateY(-3px);
-      box-shadow: 0 0 20px var(--valentine-pink);
-    }
-    .mensaje-display {
-      background: white; padding: 48px 40px; border-radius: 24px;
-      box-shadow: var(--shadow-soft); text-align: center; font-size: 1.4rem;
-      border: 1px solid rgba(212,175,55,0.2);
-    }
-    .declaracion-final {
-      background: linear-gradient(145deg, #fff, #fff0f3); padding: 60px 50px;
-      border-radius: 60px 20px 60px 20px; box-shadow: var(--shadow-soft);
-      text-align: center; border: 1px solid var(--valentine-pink);
-    }
-    .firma { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--valentine-red); margin-top: 30px; }
+    .menu-item i { color: var(--rose); width: 18px; }
+    .menu-item:hover { background: var(--rose); color: #fff; border-color: var(--rose); }
+    .menu-item:hover i { color: #fff; }
+
+    /* ══════════════════ MUSIC ══════════════════ */
     .music-player {
-      position: fixed; bottom: 30px; right: 30px; z-index: 1000;
-      background: rgba(253,248,245,0.9); backdrop-filter: blur(10px);
-      border-radius: 60px; padding: 8px 16px 8px 20px;
-      box-shadow: var(--shadow-soft); border: 1px solid var(--valentine-red);
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      background: rgba(253,248,245,0.92); backdrop-filter: blur(16px);
+      border-radius: 60px; padding: 7px 14px 7px 18px;
+      box-shadow: 0 8px 32px rgba(196,30,58,0.2);
+      border: 1px solid rgba(212,175,55,0.3);
       display: flex; align-items: center; gap: 10px;
+      transition: all 0.3s;
+    }
+    .music-info {
+      font-family: 'Montserrat', sans-serif; font-size: 0.75rem;
+      letter-spacing: 1px; color: var(--text-dark); max-width: 120px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .music-btn {
-      background: var(--valentine-red); border: none; width: 40px; height: 40px;
-      border-radius: 50%; color: white; font-size: 1.2rem; cursor: pointer;
+      background: var(--rose); border: none;
+      width: 38px; height: 38px; border-radius: 50%;
+      color: #fff; font-size: 1rem; cursor: pointer;
       transition: 0.3s; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
-    .music-btn:hover { background: var(--valentine-pink); transform: scale(1.05); }
-    .music-info { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-dark); }
-    .nav-elegante { position: fixed; top: 24px; right: 24px; z-index: 1001; display: flex; gap: 12px; }
-    .nav-btn {
-      background: rgba(253,248,245,0.8); backdrop-filter: blur(12px);
-      border: 1px solid rgba(212,175,55,0.2); width: 48px; height: 48px;
-      border-radius: 48px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: 0.3s; font-size: 1.2rem; color: var(--text-dark);
+    .music-btn:hover { background: var(--hot-pink); transform: scale(1.08); }
+
+    /* ══════════════════ SECTIONS SHARED ══════════════════ */
+    .section {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 100px 0 60px; position: relative;
     }
-    .nav-btn:hover { background: var(--valentine-red); color: white; }
-    .menu-lateral {
-      position: fixed; top: 0; right: -320px; width: 300px; height: 100vh;
-      background: rgba(253,248,245,0.95); backdrop-filter: blur(20px);
-      z-index: 1100; padding: 80px 24px 24px; transition: right 0.5s;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-      border-left: 1px solid rgba(212,175,55,0.2); overflow-y: auto;
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 5; }
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 400;
+      color: var(--rose); margin-bottom: 12px; line-height: 1.2;
+      position: relative; display: inline-block;
     }
-    .menu-lateral.active { right: 0; }
-    .menu-overlay {
-      position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2);
-      backdrop-filter: blur(4px); z-index: 1050; opacity:0; visibility:hidden; transition:0.3s;
+    .section-title::after {
+      content: ''; position: absolute; bottom: -6px; left: 0;
+      width: 55%; height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--gold), transparent);
+      border-radius: 2px;
     }
-    .menu-overlay.active { opacity:1; visibility:visible; }
-    .menu-item {
-      display: block; width:100%; padding: 16px 20px; margin-bottom:12px;
-      background: transparent; border: 1px solid rgba(212,175,55,0.2); border-radius:60px;
-      color: var(--text-dark); font-family: 'Montserrat',sans-serif; font-size:0.9rem;
-      letter-spacing:1px; text-transform:uppercase; cursor:pointer; text-align:left;
+    .section-subtitle {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      font-size: 0.82rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 44px; margin-top: 8px;
     }
-    .menu-item i { margin-right:12px; color: var(--valentine-red); width:20px; }
-    .menu-item:hover { background: var(--valentine-red); color:white; border-color:var(--valentine-red); }
-    .footer {
-      text-align: center; padding: 40px 0 20px; font-family: 'Montserrat',sans-serif;
-      font-size:0.8rem; letter-spacing:2px; color:#4a4a4a;
-      border-top:1px solid rgba(212,175,55,0.2); margin-top:60px;
+
+    /* ══════════════════ HERO ══════════════════ */
+    #inicio {
+      text-align: center; align-items: center;
+      background: radial-gradient(ellipse at 50% 0%, #fff0f5 0%, var(--cream) 60%);
+      overflow: hidden;
     }
-    @media (max-width:768px){
-      .container{padding:0 16px;}
-      .section{padding:80px 0 40px; min-height:auto;}
-      .hero{min-height:100vh;}
-      .poema-display{padding:28px;}
-      .timeline-item{padding-left:60px;}
-      .timeline::before{left:20px;}
-      .timeline-dot{left:12px;}
-      .music-player{bottom:16px; right:16px; padding:6px 12px 6px 16px;}
-      .music-info{display:none;}
-      .phrase-bubble{font-size:1rem; padding:10px 20px;}
-      #universo-final{height:100svh;}
+    #inicio::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(255,105,180,0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(212,175,55,0.06) 0%, transparent 50%);
+    }
+    .hero-petal {
+      position: absolute; pointer-events: none;
+      font-size: clamp(1rem, 2vw, 1.8rem);
+      animation: petalFall linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(-80px) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.5; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif; font-weight: 300;
+      letter-spacing: 6px; font-size: 0.78rem; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      animation: fadeUp 1s ease both;
+    }
+    .hero-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(5rem, 18vw, 10rem); font-weight: 400;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 45%, var(--hot-pink) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 28px; line-height: 1.05;
+      animation: fadeUp 1.1s ease 0.15s both;
+      filter: drop-shadow(0 4px 24px rgba(196,30,58,0.2));
+    }
+    .hero-divider {
+      display: flex; align-items: center; gap: 18px;
+      justify-content: center; margin-bottom: 28px;
+      animation: fadeUp 1s ease 0.25s both;
+    }
+    .hero-divider-line { flex: 1; max-width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .hero-divider-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+    .hero-quote {
+      font-size: clamp(1.1rem, 3.5vw, 1.6rem); font-style: italic; color: #5a3a3a;
+      max-width: 700px; margin: 0 auto 44px; line-height: 1.8;
+      animation: fadeUp 1s ease 0.35s both;
+    }
+    .scroll-cue {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--gold); font-size: 0.7rem; letter-spacing: 3px;
+      text-transform: uppercase; opacity: 0.65;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════ FOTO ══════════════════ */
+    #foto { background: linear-gradient(160deg, #fff6f8 0%, var(--cream) 100%); }
+    .foto-wrapper {
+      display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .foto-frame {
+      flex: 0 0 auto; width: clamp(260px, 40vw, 380px);
+      position: relative; margin: 0 auto;
+    }
+    .foto-frame::before {
+      content: '';
+      position: absolute; inset: -12px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      background: conic-gradient(from 0deg, var(--rose), var(--pink), var(--gold), var(--rose));
+      animation: spinBorder 8s linear infinite;
+      opacity: 0.5;
+    }
+    .foto-frame::after {
+      content: '';
+      position: absolute; inset: -4px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      background: var(--cream);
+    }
+    @keyframes spinBorder { to { transform: rotate(360deg); } }
+    .foto-principal {
+      position: relative; z-index: 2;
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      border: 3px solid rgba(255,105,180,0.4);
+      filter: sepia(0.08) contrast(1.04);
+      transition: transform 0.5s ease;
+    }
+    .foto-frame:hover .foto-principal { transform: scale(1.02); }
+    .foto-text { flex: 1; min-width: 260px; }
+    .foto-caption {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--rose); margin-bottom: 20px;
+    }
+    .foto-desc { font-size: 1.15rem; color: #5a3a3a; line-height: 1.9; }
+    .foto-desc em { color: var(--rose); font-style: normal; font-weight: 600; }
+
+    /* ══════════════════ CUALIDADES ══════════════════ */
+    #cualidades { background: #fff8fa; }
+    .cualidades-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 24px; margin-top: 10px;
+    }
+    .cualidad-card {
+      background: #fff; padding: 36px 22px;
+      border-radius: 28px 8px 28px 8px;
+      box-shadow: 0 8px 32px rgba(196,30,58,0.08);
+      border: 1px solid rgba(255,105,180,0.15);
+      transition: all 0.35s; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cualidad-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--pink), var(--gold));
+      transform: scaleX(0); transition: transform 0.4s;
+    }
+    .cualidad-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+    .cualidad-card:hover::before { transform: scaleX(1); }
+    .cualidad-icon { font-size: 2.4rem; color: var(--rose); margin-bottom: 18px; }
+    .cualidad-titulo {
+      font-family: 'Great Vibes', cursive; font-size: 2rem;
+      color: var(--rose); margin-bottom: 10px;
+    }
+    .cualidad-desc { font-size: 1rem; color: #6a4a4a; line-height: 1.7; }
+
+    /* ══════════════════ POEMA ══════════════════ */
+    #poema { background: linear-gradient(160deg, #fff0f4 0%, #fffaf5 100%); }
+    .poema-wrap { max-width: 860px; margin: 0 auto; }
+    .estrofa-nav { display: flex; gap: 10px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
+    .estrofa-btn {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: transparent; border: 2px solid rgba(212,175,55,0.5);
+      font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 500;
+      cursor: pointer; transition: all 0.3s; color: var(--text-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .estrofa-btn.active, .estrofa-btn:hover {
+      background: var(--rose); border-color: var(--rose); color: #fff;
+      transform: scale(1.12); box-shadow: 0 0 18px rgba(196,30,58,0.4);
+    }
+    .poema-card {
+      background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+      padding: clamp(28px, 5vw, 52px); border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(196,30,58,0.1);
+      border-left: 8px solid;
+      border-image: linear-gradient(180deg, var(--rose), var(--gold)) 1;
+      min-height: 360px; display: flex; align-items: center;
+      transition: opacity 0.35s;
+    }
+    .estrofa-texto {
+      font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+      line-height: 2; font-style: italic; white-space: pre-line;
+      color: #4a2a2a; width: 100%;
+      transition: opacity 0.35s;
+    }
+    .poema-controls {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 18px;
+    }
+    .p-arrow {
+      background: none; border: none; font-size: 1.8rem;
+      color: var(--rose); cursor: pointer; padding: 8px 14px;
+      transition: 0.3s; border-radius: 50%;
+    }
+    .p-arrow:hover { color: var(--gold); background: rgba(196,30,58,0.06); transform: scale(1.2); }
+    .p-counter { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: var(--rose); }
+
+    /* ══════════════════ TIMELINE ══════════════════ */
+    #timeline-sec { background: #fff8fa; }
+    .timeline { max-width: 720px; margin: 0 auto; position: relative; padding: 0 0 20px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 28px; top: 10px; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--rose), var(--gold), var(--pink));
+    }
+    .t-item { position: relative; padding-left: 74px; margin-bottom: 44px; }
+    .t-dot {
+      position: absolute; left: 20px; top: 6px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--rose); border: 3px solid #fff;
+      box-shadow: 0 0 0 4px rgba(196,30,58,0.25), 0 0 16px rgba(196,30,58,0.4);
+    }
+    .t-card {
+      background: #fff; padding: 22px 26px; border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(196,30,58,0.08);
+      font-size: 1.05rem; color: #5a3a3a; line-height: 1.75;
+      border: 1px solid rgba(255,105,180,0.1);
+      transition: box-shadow 0.3s;
+    }
+    .t-card:hover { box-shadow: 0 12px 36px rgba(196,30,58,0.15); }
+    .t-label {
+      font-family: 'Great Vibes', cursive; font-size: 1.6rem;
+      color: var(--rose); margin-bottom: 6px;
+    }
+
+    /* ══════════════════ MENSAJES ══════════════════ */
+    #mensajes { background: linear-gradient(160deg, #fffaf5, #fff0f4); }
+    .msg-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 36px; }
+    .msg-btn {
+      background: transparent; border: 1.5px solid var(--rose);
+      padding: 11px 26px; border-radius: 50px;
+      font-family: 'Montserrat', sans-serif; font-size: 0.78rem;
+      letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+      transition: all 0.3s; color: var(--text-dark);
+    }
+    .msg-btn:hover, .msg-btn.active {
+      background: var(--rose); color: #fff;
+      transform: translateY(-3px); box-shadow: 0 8px 24px rgba(196,30,58,0.35);
+    }
+    .msg-card {
+      background: #fff; padding: clamp(32px,5vw,52px); border-radius: 28px;
+      box-shadow: 0 16px 48px rgba(196,30,58,0.1);
+      text-align: center; max-width: 700px; margin: 0 auto;
+      border: 1px solid rgba(212,175,55,0.15);
+    }
+    .msg-icon { font-size: 2.8rem; color: var(--rose); margin-bottom: 18px; }
+    .msg-text { font-size: clamp(1.1rem, 2.5vw, 1.35rem); line-height: 1.85; color: #5a3a3a; }
+
+    /* ══════════════════ DECLARACIÓN ══════════════════ */
+    #declaracion {
+      background: linear-gradient(145deg, #fff, #fff2f5, #fffaf0);
+      text-align: center;
+    }
+    .decl-card {
+      background: rgba(255,255,255,0.9); padding: clamp(40px,6vw,70px) clamp(28px,6vw,60px);
+      border-radius: 60px 20px; max-width: 860px; margin: 0 auto;
+      box-shadow: 0 24px 80px rgba(196,30,58,0.12);
+      border: 1px solid rgba(255,105,180,0.2);
+      position: relative; overflow: hidden;
+    }
+    .decl-card::before {
+      content: '❤'; position: absolute;
+      top: -30px; right: -20px; font-size: 180px;
+      opacity: 0.03; color: var(--rose); pointer-events: none;
+    }
+    .decl-text { font-size: clamp(1.1rem, 2.8vw, 1.45rem); line-height: 1.85; color: #4a2a2a; font-style: italic; }
+    .decl-firma {
+      font-family: 'Great Vibes', cursive; font-size: clamp(2.4rem, 6vw, 3.8rem);
+      color: var(--rose); margin-top: 32px; line-height: 1.3;
+    }
+
+    /* ══════════════════ FOOTER ══════════════════ */
+    footer {
+      text-align: center; padding: 32px 20px;
+      font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+      letter-spacing: 2.5px; color: #9a7a7a; text-transform: uppercase;
+      border-top: 1px solid rgba(212,175,55,0.15);
+    }
+
+    /* ══════════════════════════════════════════
+       UNIVERSO 3D — Sección principal
+    ══════════════════════════════════════════ */
+    #universo-final {
+      position: relative; width: 100%;
+      height: 100vh; min-height: 600px;
+      overflow: hidden; display: block; padding: 0;
+      background: #000;
+    }
+    #universo-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; display: block;
+    }
+    /* Bloom overlay via multiple radial gradients */
+    .bloom-overlay {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 40% at 50% 42%, rgba(255,20,147,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 30% at 50% 44%, rgba(255,105,180,0.10) 0%, transparent 80%),
+        radial-gradient(ellipse 40% 20% at 50% 36%, rgba(255,255,255,0.06) 0%, transparent 60%);
+      mix-blend-mode: screen;
+    }
+    /* Frases HTML orbitando (perspectiva 3D) */
+    .phrases-layer {
+      position: absolute; inset: 0; z-index: 6;
+      pointer-events: none; overflow: hidden;
+      perspective: 900px;
+    }
+    .u-phrase {
+      position: absolute;
+      font-family: 'Great Vibes', cursive;
+      white-space: nowrap;
+      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+      will-change: transform, opacity;
+    }
+    /* Kawaii images layer */
+    .kawaii-layer {
+      position: absolute; inset: 0; z-index: 8; pointer-events: none;
+    }
+    .kw {
+      position: absolute;
+      pointer-events: none;
+      image-rendering: crisp-edges;
+      will-change: transform;
+      filter: drop-shadow(0 0 8px rgba(255,105,180,0.6));
+    }
+    /* Centre overlay */
+    .univ-centre {
+      position: absolute; inset: 0; z-index: 10;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; pointer-events: none;
+      text-align: center;
+    }
+    .univ-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 4.2rem);
+      color: #fff8f0;
+      text-shadow: 0 0 20px var(--pink), 0 0 50px rgba(255,105,180,0.7),
+                   0 0 100px rgba(255,20,147,0.4);
+      line-height: 1.2;
+    }
+    .univ-sub {
+      font-family: 'Montserrat', sans-serif; font-size: clamp(0.6rem, 1.6vw, 0.88rem);
+      letter-spacing: 3.5px; color: rgba(255,255,255,0.8);
+      text-shadow: 0 0 16px var(--rose); margin-top: 10px;
+    }
+    /* Bottom phrase bubble */
+    .univ-phrase-bar {
+      position: absolute; bottom: 28px; left: 0; width: 100%;
+      z-index: 20; display: flex; justify-content: center; pointer-events: none;
+    }
+    .phrase-pill {
+      background: rgba(196,30,58,0.22);
+      backdrop-filter: blur(14px);
+      padding: clamp(10px,2vw,16px) clamp(24px,5vw,44px);
+      border-radius: 60px; border: 1.5px solid rgba(255,215,0,0.6);
+      color: #fff; font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      box-shadow: 0 0 30px rgba(255,105,180,0.5), 0 0 60px rgba(255,105,180,0.2);
+      text-shadow: 0 0 16px var(--pink);
+      animation: pillFloat 3.8s ease-in-out infinite;
+      transition: opacity 0.4s;
+      max-width: 90%; text-align: center;
+    }
+    @keyframes pillFloat {
+      0%,100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(-9px); opacity: 1; }
+    }
+
+    /* ══════════════════ RESPONSIVE ══════════════════ */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .section { padding: 80px 0 40px; min-height: auto; }
+      #inicio { min-height: 100svh; }
+      .foto-wrapper { flex-direction: column; gap: 32px; }
+      .poema-card { padding: 24px 20px; }
+      .decl-card { padding: 36px 20px; border-radius: 36px 14px; }
+      .music-info { display: none; }
+      .music-player { bottom: 16px; right: 16px; padding: 6px 12px 6px 14px; }
+      #universo-final { height: 100svh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- MENÚ -->
-  <div class="nav-elegante">
-    <button class="nav-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
-    <button class="nav-btn" id="fullscreenBtn"><i class="fas fa-expand"></i></button>
-  </div>
-  <div class="menu-overlay" id="menuOverlay"></div>
-  <div class="menu-lateral" id="menuLateral">
-    <button class="menu-item" data-section="inicio"><i class="fas fa-home"></i> Inicio</button>
-    <button class="menu-item" data-section="foto"><i class="fas fa-camera"></i> Su esencia</button>
-    <button class="menu-item" data-section="cualidades"><i class="fas fa-star"></i> Cualidades</button>
-    <button class="menu-item" data-section="poema"><i class="fas fa-feather-alt"></i> Poema interactivo</button>
-    <button class="menu-item" data-section="timeline"><i class="fas fa-history"></i> Nuestra historia</button>
-    <button class="menu-item" data-section="mensajes"><i class="fas fa-heart"></i> Mensajes</button>
-    <button class="menu-item" data-section="declaracion"><i class="fas fa-crown"></i> Declaración</button>
-    <button class="menu-item" data-section="universo-final"><i class="fas fa-heartbeat"></i> Universo Corazón</button>
-  </div>
+<!-- NAV -->
+<div class="nav-fixed">
+  <button class="nav-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+  <button class="nav-btn" id="fsBtn"><i class="fas fa-expand"></i></button>
+</div>
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="menu-drawer" id="menuDrawer">
+  <div class="menu-drawer-title">❤ Adriana</div>
+  <button class="menu-item" data-s="inicio"><i class="fas fa-home"></i>Inicio</button>
+  <button class="menu-item" data-s="foto"><i class="fas fa-camera-retro"></i>Su esencia</button>
+  <button class="menu-item" data-s="cualidades"><i class="fas fa-star"></i>Cualidades</button>
+  <button class="menu-item" data-s="poema"><i class="fas fa-feather-alt"></i>Poema</button>
+  <button class="menu-item" data-s="timeline-sec"><i class="fas fa-heart"></i>Nuestra historia</button>
+  <button class="menu-item" data-s="mensajes"><i class="fas fa-envelope-open-heart"></i>Mensajes</button>
+  <button class="menu-item" data-s="declaracion"><i class="fas fa-crown"></i>Declaración</button>
+  <button class="menu-item" data-s="universo-final"><i class="fas fa-galaxy"></i>Universo</button>
+</div>
 
-  <!-- MÚSICA -->
-  <div class="music-player" id="musicPlayer">
-    <div class="music-info">Happy Together</div>
-    <button class="music-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
-    <audio id="bgMusic" loop preload="auto">
-      <source src="Happy Together.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+<!-- MUSIC -->
+<div class="music-player">
+  <div class="music-info">Happy Together</div>
+  <button class="music-btn" id="playBtn"><i class="fas fa-play"></i></button>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="Happy Together.mp3" type="audio/mpeg">
+  </audio>
+</div>
 
-  <div class="container">
-    <!-- HERO -->
-    <section id="inicio" class="section hero">
-      <h1 class="hero-title">Adriana</h1>
-      <p class="hero-quote">"No fue casualidad, fue el universo entero conspirando para que mis ojos encontraran los tuyos. Y desde ese instante, supe que no necesitaba más pruebas: te amo."</p>
-      <div class="scroll-indicator">
-        <span>Descubre</span>
-        <i class="fas fa-chevron-down" style="margin-top:8px;"></i>
-      </div>
-    </section>
+<div class="container">
 
-    <!-- FOTO -->
-    <section id="foto" class="section">
-      <div style="text-align:center;">
-        <h2 class="section-title">Su esencia</h2>
-        <p class="section-subtitle">Capturada en una mirada</p>
-      </div>
-      <div class="foto-marco">
-        <img src="foto.jpg" alt="Adriana" class="foto-principal" id="fotoAdriana">
-        <div class="foto-caption">La dueña de mis pensamientos</div>
-      </div>
-      <p style="max-width:600px; margin:30px auto 0; text-align:center; font-size:1.2rem;">
-        Piel canela besada por el sol, ojos profundos donde habita el misterio y una voz suave que calma cualquier tormenta.
-        Así eres tú, Adriana: una obra de arte delicada y divertida, con una figura que combina la elegancia delgada con curvas que enamoran.
-      </p>
-    </section>
-
-    <!-- CUALIDADES -->
-    <section id="cualidades" class="section">
-      <div style="text-align:center;">
-        <h2 class="section-title">Lo que te hace única</h2>
-        <p class="section-subtitle">Un universo en una persona</p>
-      </div>
-      <div class="cualidades-grid">
-        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-feather"></i></div><h3 class="cualidad-titulo">Delicadeza</h3><p>En cada gesto hay una suavidad que transforma lo cotidiano en poesía.</p></div>
-        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-microphone-alt"></i></div><h3 class="cualidad-titulo">Voz de terciopelo</h3><p>Tu voz es un arrullo que serena el alma y despierta mariposas.</p></div>
-        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-smile-wink"></i></div><h3 class="cualidad-titulo">Divertida</h3><p>Tu risa es contagiosa, iluminas cualquier espacio con tu chispa única.</p></div>
-        <div class="cualidad-card"><div class="cualidad-icon"><i class="fas fa-paint-brush"></i></div><h3 class="cualidad-titulo">Figura de arte</h3><p>Delgada y con curvas perfectas, como esculpida por el mejor artista.</p></div>
-      </div>
-    </section>
-
-    <!-- POEMA INTERACTIVO -->
-    <section id="poema" class="section">
-      <div style="text-align:center;">
-        <h2 class="section-title">El Tiempo que me Diste</h2>
-        <p class="section-subtitle">Un poema para atesorar</p>
-      </div>
-      <div class="poema-interactivo">
-        <div class="estrofa-nav" id="estrofaNav"></div>
-        <div class="poema-display" id="poemaDisplay">
-          <div class="estrofa-texto" id="estrofaTexto"></div>
-        </div>
-        <div class="poema-controls">
-          <button class="poema-arrow" id="prevEstrofa"><i class="fas fa-chevron-left"></i></button>
-          <span style="font-family:'Montserrat'; color:var(--valentine-red);" id="contadorEstrofa">1 / 5</span>
-          <button class="poema-arrow" id="nextEstrofa"><i class="fas fa-chevron-right"></i></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section id="timeline" class="section">
-      <div style="text-align:center;"><h2 class="section-title">Nuestra historia</h2><p class="section-subtitle">Apenas comienza</p></div>
-      <div class="timeline">
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">El destino cruzó nuestras miradas. Amor a primera vista.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">Descubro tu voz suave, tu humor encantador, tu delicadeza.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">Te escribo esto para que sepas que eres mi razón de sonreír.</div></div>
-        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content">El universo nos encontrará. Sin distancia, solo nosotros.</div></div>
-      </div>
-    </section>
-
-    <!-- MENSAJES -->
-    <section id="mensajes" class="section">
-      <div style="text-align:center;"><h2 class="section-title">Mensajes para ti</h2><p class="section-subtitle">Pequeñas verdades</p></div>
-      <div class="mensajes-selector">
-        <button class="mensaje-btn active" data-mensaje="1">Tu esencia</button>
-        <button class="mensaje-btn" data-mensaje="2">Tu figura</button>
-        <button class="mensaje-btn" data-mensaje="3">Tu voz</button>
-        <button class="mensaje-btn" data-mensaje="4">Promesa</button>
-      </div>
-      <div class="mensaje-display" id="mensajeDisplay">
-        <i class="fas fa-heart" style="font-size:3rem; color:var(--valentine-red); margin-bottom:20px;"></i>
-        <p id="mensajeTexto">Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.</p>
-      </div>
-    </section>
-
-    <!-- DECLARACIÓN -->
-    <section id="declaracion" class="section">
-      <div class="declaracion-final">
-        <i class="fas fa-quote-left" style="font-size:3rem; color:var(--valentine-red); opacity:0.5;"></i>
-        <p style="font-size:1.6rem; line-height:1.5;">Adriana, no sé qué escribió el destino, pero yo ya escribí tu nombre en el mío. Eres hermosa, divertida, delicada y dueña de una voz que acaricia el alma. No necesito más tiempo para saber que te amo. Pronto estaremos frente a frente, y ese día comenzará nuestra historia sin final.</p>
-        <div class="firma">Siempre tuyo,<br>con todo mi amor</div>
-      </div>
-    </section>
-
-    <footer class="footer"><p>✨ Creado con el corazón para Adriana · San Valentín eterno ✨</p></footer>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       UNIVERSO FINAL - 2D Canvas + HTML
-  ═══════════════════════════════════ -->
-  <section id="universo-final">
-    <!-- Canvas 2D para estrellas + "planeta" saturnino -->
-    <canvas id="universo-canvas"></canvas>
-
-    <!-- Frases flotantes HTML sobre el canvas -->
-    <div class="canvas-phrases" id="canvasPhrases"></div>
-
-    <!-- Imágenes kawaii (1.png–4.png) -->
-    <img src="1.png" class="kawaii-img" id="kw1" alt="">
-    <img src="2.png" class="kawaii-img" id="kw2" alt="">
-    <img src="3.png" class="kawaii-img" id="kw3" alt="">
-    <img src="4.png" class="kawaii-img" id="kw4" alt="">
-
-    <!-- Título centrado -->
-    <div class="universe-overlay">
-      <h2 class="universe-title">❤️ Universo Corazón ❤️</h2>
-      <p class="universe-sub">Cada estrella, un latido · cada frase, un susurro</p>
+  <!-- ── HERO ── -->
+  <section id="inicio" class="section" style="text-align:center;align-items:center;">
+    <div class="hero-eyebrow">Para ti, con todo mi amor</div>
+    <h1 class="hero-title">Adriana</h1>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span style="color:var(--rose);font-size:1.2rem;">❤</span>
+      <div class="hero-divider-line r"></div>
     </div>
-
-    <!-- Frase inferior -->
-    <div class="floating-phrase-bar">
-      <div class="phrase-bubble" id="livePhrase">Te Amo!</div>
+    <p class="hero-quote">"No fue casualidad — fue el universo entero conspirando para que mis ojos encontraran los tuyos. Y desde ese instante, supe que no necesitaba más pruebas: te amo."</p>
+    <div class="scroll-cue">
+      <span style="font-family:'Montserrat';font-size:0.68rem;letter-spacing:3px;">Descubre</span>
+      <i class="fas fa-chevron-down"></i>
     </div>
   </section>
 
-  <script>
-  /* ───────────────────────────────────────────────
-     UI: menú, fullscreen, música, poema, mensajes
-  ─────────────────────────────────────────────── */
-  (function(){
-    // Menú
-    const menuToggle  = document.getElementById('menuToggle');
-    const menuLateral = document.getElementById('menuLateral');
-    const menuOverlay = document.getElementById('menuOverlay');
-    function toggleMenu(){ menuLateral.classList.toggle('active'); menuOverlay.classList.toggle('active'); }
-    menuToggle.addEventListener('click', toggleMenu);
-    menuOverlay.addEventListener('click', toggleMenu);
-    document.querySelectorAll('.menu-item').forEach(item => {
-      item.addEventListener('click', function(){
-        const s = document.getElementById(this.dataset.section);
-        if(s){ s.scrollIntoView({behavior:'smooth'}); toggleMenu(); }
-      });
-    });
+  <!-- ── FOTO ── -->
+  <section id="foto" class="section">
+    <div>
+      <h2 class="section-title">Su esencia</h2>
+      <p class="section-subtitle">Capturada en una mirada</p>
+    </div>
+    <div class="foto-wrapper">
+      <div class="foto-frame">
+        <img src="foto.jpg" alt="Adriana" class="foto-principal" id="fotoAdriana">
+      </div>
+      <div class="foto-text">
+        <div class="foto-caption">La dueña de mis pensamientos</div>
+        <p class="foto-desc">
+          Piel <em>canela</em> besada por el sol, ojos profundos donde habita el misterio y una voz suave que calma cualquier tormenta.<br><br>
+          Así eres tú, Adriana: una obra de arte <em>delicada y luminosa</em>, con una elegancia natural que no necesita esfuerzo, y una chispa que ilumina cada habitación que pisas.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    // Fullscreen
-    const fsBtn = document.getElementById('fullscreenBtn');
-    fsBtn.addEventListener('click', () => {
-      if (!document.fullscreenElement){
-        document.documentElement.requestFullscreen();
-        fsBtn.innerHTML='<i class="fas fa-compress"></i>';
-      } else {
-        document.exitFullscreen();
-        fsBtn.innerHTML='<i class="fas fa-expand"></i>';
-      }
-    });
+  <!-- ── CUALIDADES ── -->
+  <section id="cualidades" class="section">
+    <div style="text-align:center;">
+      <h2 class="section-title">Lo que te hace única</h2>
+      <p class="section-subtitle">Un universo en una persona</p>
+    </div>
+    <div class="cualidades-grid">
+      <div class="cualidad-card">
+        <div class="cualidad-icon"><i class="fas fa-feather"></i></div>
+        <div class="cualidad-titulo">Delicadeza</div>
+        <p class="cualidad-desc">En cada gesto hay una suavidad que transforma lo cotidiano en poesía.</p>
+      </div>
+      <div class="cualidad-card">
+        <div class="cualidad-icon"><i class="fas fa-microphone-alt"></i></div>
+        <div class="cualidad-titulo">Voz de terciopelo</div>
+        <p class="cualidad-desc">Tu voz es un arrullo que serena el alma y despierta mariposas.</p>
+      </div>
+      <div class="cualidad-card">
+        <div class="cualidad-icon"><i class="fas fa-smile-wink"></i></div>
+        <div class="cualidad-titulo">Divertida</div>
+        <p class="cualidad-desc">Tu risa es contagiosa; iluminas cualquier espacio con tu chispa única.</p>
+      </div>
+      <div class="cualidad-card">
+        <div class="cualidad-icon"><i class="fas fa-heart"></i></div>
+        <div class="cualidad-titulo">Corazón de oro</div>
+        <p class="cualidad-desc">Tu bondad genuina te hace aún más hermosa de lo que ya eres.</p>
+      </div>
+    </div>
+  </section>
 
-    // Música
-    const audio   = document.getElementById('bgMusic');
-    const playBtn = document.getElementById('playPauseBtn');
-    let playing   = false;
-    playBtn.addEventListener('click', () => {
-      if(playing){ audio.pause(); playBtn.innerHTML='<i class="fas fa-play"></i>'; }
-      else { audio.play().catch(()=>{}); playBtn.innerHTML='<i class="fas fa-pause"></i>'; }
-      playing = !playing;
-    });
+  <!-- ── POEMA ── -->
+  <section id="poema" class="section">
+    <div style="text-align:center;">
+      <h2 class="section-title">El Tiempo que me Diste</h2>
+      <p class="section-subtitle">Un poema para atesorar</p>
+    </div>
+    <div class="poema-wrap">
+      <div class="estrofa-nav" id="estrofaNav"></div>
+      <div class="poema-card">
+        <div class="estrofa-texto" id="estrofaTexto"></div>
+      </div>
+      <div class="poema-controls">
+        <button class="p-arrow" id="prevE"><i class="fas fa-chevron-left"></i></button>
+        <span class="p-counter" id="pCounter">1 / 5</span>
+        <button class="p-arrow" id="nextE"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
 
-    // Mensajes
-    const mensajes = {
-      1:{ icon:'fa-heart',      text:'Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.' },
-      2:{ icon:'fa-female',     text:'Tu figura es poesía visual: delgada, estilizada, pero con esas curvas suaves que enamoran a cualquiera.' },
-      3:{ icon:'fa-microphone', text:'Tu voz es un bálsamo. Suave, melodiosa, capaz de calmar cualquier ansiedad.' },
-      4:{ icon:'fa-star',       text:'Pronto nos encontraremos, lo sé. No hay distancia cuando dos almas están destinadas.' }
+  <!-- ── TIMELINE ── -->
+  <section id="timeline-sec" class="section">
+    <div style="text-align:center;">
+      <h2 class="section-title">Nuestra historia</h2>
+      <p class="section-subtitle">Apenas comienza</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item"><div class="t-dot"></div><div class="t-card"><div class="t-label">El primer instante</div>El destino cruzó nuestras miradas y supe, sin lugar a dudas, que eras tú.</div></div>
+      <div class="t-item"><div class="t-dot"></div><div class="t-card"><div class="t-label">Conocerte</div>Descubrí tu voz suave, tu humor encantador, tu delicadeza infinita.</div></div>
+      <div class="t-item"><div class="t-dot"></div><div class="t-card"><div class="t-label">Este momento</div>Te escribo esto para que sepas que eres mi razón de sonreír cada día.</div></div>
+      <div class="t-item"><div class="t-dot"></div><div class="t-card"><div class="t-label">El futuro</div>El universo nos encontrará cara a cara. Sin distancias, solo nosotros.</div></div>
+    </div>
+  </section>
+
+  <!-- ── MENSAJES ── -->
+  <section id="mensajes" class="section">
+    <div style="text-align:center;">
+      <h2 class="section-title">Mensajes para ti</h2>
+      <p class="section-subtitle">Pequeñas verdades</p>
+    </div>
+    <div class="msg-btns">
+      <button class="msg-btn active" data-m="1">Tu esencia</button>
+      <button class="msg-btn" data-m="2">Tu figura</button>
+      <button class="msg-btn" data-m="3">Tu voz</button>
+      <button class="msg-btn" data-m="4">Promesa</button>
+    </div>
+    <div class="msg-card">
+      <div class="msg-icon"><i class="fas fa-heart" id="msgIcon"></i></div>
+      <p class="msg-text" id="msgText">Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.</p>
+    </div>
+  </section>
+
+  <!-- ── DECLARACIÓN ── -->
+  <section id="declaracion" class="section">
+    <div style="text-align:center; margin-bottom:36px;">
+      <h2 class="section-title">Mi declaración</h2>
+      <p class="section-subtitle">Con el corazón en la mano</p>
+    </div>
+    <div class="decl-card">
+      <i class="fas fa-quote-left" style="font-size:2.4rem;color:var(--rose);opacity:0.35;margin-bottom:18px;display:block;"></i>
+      <p class="decl-text">Adriana, no sé qué escribió el destino, pero yo ya escribí tu nombre en el mío. Eres hermosa, divertida, delicada y dueña de una voz que acaricia el alma. No necesito más tiempo para saber que te amo. Pronto estaremos frente a frente, y ese día comenzará nuestra historia sin final.</p>
+      <div class="decl-firma">Siempre tuyo,<br>con todo mi amor ❤</div>
+    </div>
+  </section>
+
+  <footer>✨ Creado con el corazón para Adriana · Amor eterno ✨</footer>
+</div><!-- /container -->
+
+<!-- ══════════════════════════════════════
+     UNIVERSO 3D — fuera del container
+══════════════════════════════════════ -->
+<section id="universo-final">
+  <canvas id="universo-canvas"></canvas>
+  <div class="bloom-overlay"></div>
+
+  <!-- Frases HTML en perspectiva 3D -->
+  <div class="phrases-layer" id="phrasesLayer"></div>
+
+  <!-- Kawaii images -->
+  <div class="kawaii-layer" id="kawaiiLayer"></div>
+
+  <!-- Título central -->
+  <div class="univ-centre">
+    <h2 class="univ-title">❤ Universo Corazón ❤</h2>
+    <p class="univ-sub">Cada estrella, un latido · cada frase, un susurro</p>
+  </div>
+
+  <!-- Frase inferior -->
+  <div class="univ-phrase-bar">
+    <div class="phrase-pill" id="livePill">Te Amo!</div>
+  </div>
+</section>
+
+<script>
+/* ════════════════════════════════════
+   UI — menú, fullscreen, música, etc
+════════════════════════════════════ */
+(function(){
+  // Menú
+  const toggle  = document.getElementById('menuToggle');
+  const drawer  = document.getElementById('menuDrawer');
+  const overlay = document.getElementById('menuOverlay');
+  const close = () => { drawer.classList.remove('active'); overlay.classList.remove('active'); };
+  toggle.addEventListener('click', () => { drawer.classList.toggle('active'); overlay.classList.toggle('active'); });
+  overlay.addEventListener('click', close);
+  document.querySelectorAll('.menu-item[data-s]').forEach(b => b.addEventListener('click', function(){
+    const el = document.getElementById(this.dataset.s);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+    close();
+  }));
+
+  // Fullscreen
+  const fsBtn = document.getElementById('fsBtn');
+  fsBtn.addEventListener('click', () => {
+    if(!document.fullscreenElement){
+      document.documentElement.requestFullscreen();
+      fsBtn.innerHTML='<i class="fas fa-compress"></i>';
+    } else {
+      document.exitFullscreen();
+      fsBtn.innerHTML='<i class="fas fa-expand"></i>';
+    }
+  });
+
+  // Música
+  const audio   = document.getElementById('bgMusic');
+  const playBtn = document.getElementById('playBtn');
+  let playing   = false;
+  playBtn.addEventListener('click', () => {
+    if(playing){ audio.pause(); playBtn.innerHTML='<i class="fas fa-play"></i>'; }
+    else { audio.play().catch(()=>{}); playBtn.innerHTML='<i class="fas fa-pause"></i>'; }
+    playing = !playing;
+  });
+
+  // Mensajes
+  const msgs = {
+    1:{ icon:'fa-heart',      text:'Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.' },
+    2:{ icon:'fa-female',     text:'Tu figura es poesía visual: elegante, estilizada, con esas curvas suaves que enamoran a cualquiera.' },
+    3:{ icon:'fa-microphone', text:'Tu voz es un bálsamo. Suave, melodiosa, capaz de calmar cualquier ansiedad con solo pronunciar mi nombre.' },
+    4:{ icon:'fa-star',       text:'Pronto nos encontraremos, lo sé. No hay distancia cuando dos almas están verdaderamente destinadas.' }
+  };
+  document.querySelectorAll('.msg-btn').forEach(b => b.addEventListener('click', function(){
+    document.querySelectorAll('.msg-btn').forEach(x => x.classList.remove('active'));
+    this.classList.add('active');
+    const m = msgs[this.dataset.m];
+    document.getElementById('msgIcon').className = `fas ${m.icon}`;
+    document.getElementById('msgText').textContent = m.text;
+  }));
+
+  // Poema
+  const estrofas = [
+    "I.\nYo, que caminé mil años sin saber lo que era el frío,\nyo, que sostuve una espada mientras los imperios caían,\nyo, que olvidé el sabor de las lágrimas propias\nen el largo pasillo de las noches vacías.\n\nMi nombre era un eco que nadie pronunciaba,\nmi capa, el terciopelo de los ocasos perdidos.\nContaba los siglos como quien cuenta gotas\nen el filo infinito de un destino maldito.\n\nHasta que llegaste tú.",
+    "II.\nNo con truenos, no con anuncios de ángeles.\nLlegaste como llega la lluvia al polvo,\ncon ese paso tuyo que no pide permiso,\ncon esa risa que rompe todos mis hechizos.\n\nY de repente, yo, que había visto morir estrellas,\nme encontré temblando ante tus ojos.\nYo, que no necesitaba nada,\nnecesitaba tu mano entre mis manos,\nnecesitaba tu voz diciendo mi nombre\ncomo si fuera la única palabra\nque merece ser dicha en este mundo.",
+    "III.\nTú, mi niña, mi única respuesta.\nTú, que encendiste velas para que yo me quedara,\nque con tus manos frágiles sostuviste\nno una espada, sino mi corazón de piedra\ny lo hiciste latir por primera vez.\n\n¿Qué son mil años frente a una tarde contigo?\n¿Qué es la inmortalidad frente a un beso tuyo?\nYo cambiaria la eternidad entera\npor una noche viendo cómo duermes.",
+    "IV.\nPorque tú eres mi única novia,\nmi única muerte, mi única vida.\nLa que me enseñó que el tiempo no se cuenta\nen años, sino en miradas.\nLa que me mostró que el amor no es para siempre,\nes para ahora, es para ti, es para nosotros.\n\nY cuando la lluvia cae sobre esta ciudad,\ncuando el viento trae memorias de otras eras,\nyo solo recuerdo tus manos en mi pecho,\nsolo recuerdo tu risa, solo recuerdo tu nombre.",
+    "V.\nTú, mi niña, mi amor, mi única.\nLa que me hizo mortal solo con quererme.\nLa que me hizo eterno solo con mirarme.\n\nNo necesito más espadas,\nno necesito más siglos.\nSolo necesito tus ojos al despertar,\nsolo necesito tu mano cuando anochece.\n\nPorque antes de ti, yo fui leyenda.\nDespués de ti, soy solo tuyo.\nY no hay inmortalidad más grande\nque esta: ser el que te abraza cuando llueve,\nser el que te besa cuando amanece.\n\nTe amo, mi niña.\nHoy y siempre."
+  ];
+  const navDiv = document.getElementById('estrofaNav');
+  const txDiv  = document.getElementById('estrofaTexto');
+  const ctrEl  = document.getElementById('pCounter');
+  let cur = 0;
+  function showE(i){
+    txDiv.style.opacity='0';
+    setTimeout(()=>{ txDiv.textContent=estrofas[i]; txDiv.style.opacity='1'; ctrEl.textContent=`${i+1} / ${estrofas.length}`; document.querySelectorAll('.estrofa-btn').forEach((b,j)=>b.classList.toggle('active',j===i)); },220);
+  }
+  for(let i=0;i<estrofas.length;i++){
+    const b=document.createElement('button');
+    b.className='estrofa-btn'; b.textContent=i+1;
+    b.addEventListener('click',()=>{ cur=i; showE(cur); });
+    navDiv.appendChild(b);
+  }
+  showE(0);
+  document.getElementById('prevE').addEventListener('click',()=>{ if(cur>0){ cur--; showE(cur); } });
+  document.getElementById('nextE').addEventListener('click',()=>{ if(cur<estrofas.length-1){ cur++; showE(cur); } });
+
+  // Hero petals
+  const petals=['🌸','🌹','💕','✨','🌺','💖'];
+  for(let i=0;i<12;i++){
+    const d=document.createElement('div');
+    d.className='hero-petal'; d.textContent=petals[i%petals.length];
+    d.style.left=Math.random()*100+'%';
+    d.style.animationDuration=(8+Math.random()*12)+'s';
+    d.style.animationDelay=(-Math.random()*15)+'s';
+    d.style.fontSize=(0.8+Math.random()*1.2)+'rem';
+    document.getElementById('inicio').appendChild(d);
+  }
+
+  // Foto fallback
+  document.getElementById('fotoAdriana').addEventListener('error', function(){
+    this.src='https://placehold.co/600x800/fdf8f5/c41e3a?text=Adriana';
+  });
+})();
+
+/* ════════════════════════════════════════════════════
+   UNIVERSO 3D — Canvas con campo estelar en perspectiva
+   + bloom simulado + planeta + kawaii + frases orbitales
+════════════════════════════════════════════════════ */
+(function(){
+  const canvas  = document.getElementById('universo-canvas');
+  const ctx     = canvas.getContext('2d');
+  const section = document.getElementById('universo-final');
+  const phLayer = document.getElementById('phrasesLayer');
+  const kwLayer = document.getElementById('kawaiiLayer');
+
+  let W, H, CX, CY, isMobile;
+
+  /* ── Resize ── */
+  function resize(){
+    W = section.offsetWidth; H = section.offsetHeight;
+    canvas.width = W; canvas.height = H;
+    CX = W/2; CY = H/2;
+    isMobile = W < 640;
+    placeKawaii();
+  }
+
+  /* ═══════════════════════════════
+     ESTRELLAS 3D — campo en perspectiva
+     Simulan un túnel/galaxia girando
+  ═══════════════════════════════ */
+  const STAR_N = 800;
+  const stars3d = [];
+  const SPREAD = 1.4; // spread factor
+  function mkStar(){
+    return {
+      x: (Math.random()-0.5)*2,   // -1..1
+      y: (Math.random()-0.5)*2,
+      z: Math.random(),            // depth 0..1 (0=far,1=near)
+      baseZ: 0,
+      r: Math.random()*1.5+0.3,
+      color: Math.random()<0.25?'#ffaacc':Math.random()<0.5?'#ffd4e8':'#ffffff',
+      twinkle: Math.random()*Math.PI*2,
+      twinkleSpeed: 0.02+Math.random()*0.04
     };
-    document.querySelectorAll('.mensaje-btn').forEach(b => {
-      b.addEventListener('click', function(){
-        document.querySelectorAll('.mensaje-btn').forEach(bt=>bt.classList.remove('active'));
-        this.classList.add('active');
-        const m = mensajes[this.dataset.mensaje];
-        document.querySelector('#mensajeDisplay i').className = `fas ${m.icon}`;
-        document.getElementById('mensajeTexto').textContent = m.text;
+  }
+  function initStars(){
+    stars3d.length=0;
+    for(let i=0;i<STAR_N;i++){
+      const s=mkStar();
+      s.baseZ=s.z=Math.random();
+      stars3d.push(s);
+    }
+  }
+
+  /* ═══════════════════════════════
+     GROUND STARS — plano horizontal
+     (efecto suelo estelar de la imagen 2)
+  ═══════════════════════════════ */
+  const groundStars=[];
+  const GN=320;
+  function initGround(){
+    groundStars.length=0;
+    for(let i=0;i<GN;i++){
+      groundStars.push({
+        x:(Math.random()-0.5)*3,
+        z:Math.random()*2+0.2,   // depth en el plano
+        r:Math.random()*1.8+0.4,
+        alpha:Math.random()*0.7+0.2,
+        color:Math.random()<0.3?'#ff69b4':'#ffffff'
       });
+    }
+  }
+
+  /* ═══════════════════════════════
+     CORAZONES VOLADORES
+  ═══════════════════════════════ */
+  const HEART_N=22;
+  const hearts=[];
+  function spawnHeart(){
+    return {
+      x:Math.random()*W,
+      y:H+20,
+      size:isMobile?6+Math.random()*10:8+Math.random()*18,
+      speed:0.25+Math.random()*0.55,
+      drift:(Math.random()-0.5)*0.3,
+      alpha:0.4+Math.random()*0.5,
+      color:Math.random()<0.5?'#ff69b4':'#ff1493'
+    };
+  }
+  function initHearts(){
+    hearts.length=0;
+    for(let i=0;i<HEART_N;i++){
+      const h=spawnHeart(); h.y=Math.random()*H; hearts.push(h);
+    }
+  }
+  function drawHeart(x,y,s,color,alpha){
+    ctx.save();
+    ctx.globalAlpha=alpha;
+    ctx.fillStyle=color;
+    ctx.shadowColor=color; ctx.shadowBlur=18;
+    ctx.beginPath();
+    ctx.moveTo(x,y-s*0.25);
+    ctx.bezierCurveTo(x,y-s*0.75,x-s,y-s*0.75,x-s,y-s*0.25);
+    ctx.bezierCurveTo(x-s,y+s*0.1,x,y+s*0.55,x,y+s*0.55);
+    ctx.bezierCurveTo(x,y+s*0.55,x+s,y+s*0.1,x+s,y-s*0.25);
+    ctx.bezierCurveTo(x+s,y-s*0.75,x,y-s*0.75,x,y-s*0.25);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  /* ═══════════════════════════════
+     PLANETA TIPO SATURNO — perspectiva
+  ═══════════════════════════════ */
+  function drawPlanet(t){
+    /* Planet position: upper-center like image 2 */
+    const px=CX, py=isMobile?CY*0.38:CY*0.40;
+    const pr=isMobile?W*0.11:Math.min(W,H)*0.115;
+
+    // Planet body
+    const grad=ctx.createRadialGradient(px-pr*0.35,py-pr*0.35,pr*0.04,px,py,pr);
+    grad.addColorStop(0,'#1a001a');
+    grad.addColorStop(0.4,'#0d0008');
+    grad.addColorStop(1,'#050003');
+    ctx.save();
+    ctx.shadowColor='#ff1493'; ctx.shadowBlur=60;
+    ctx.beginPath();
+    ctx.arc(px,py,pr,0,Math.PI*2);
+    ctx.fillStyle=grad;
+    ctx.fill();
+    ctx.restore();
+
+    // Subtle highlight
+    const hl=ctx.createRadialGradient(px-pr*0.3,py-pr*0.4,0,px-pr*0.3,py-pr*0.4,pr*0.6);
+    hl.addColorStop(0,'rgba(255,100,200,0.12)');
+    hl.addColorStop(1,'transparent');
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(px,py,pr,0,Math.PI*2);
+    ctx.fillStyle=hl; ctx.fill();
+    ctx.restore();
+
+    /* Ring — ellipse, brighter and wider (like the neon ring in image 2) */
+    const rx=pr*2.4, ry=pr*0.28;
+    const ringG=ctx.createLinearGradient(px-rx,py,px+rx,py);
+    ringG.addColorStop(0,'rgba(255,20,147,0)');
+    ringG.addColorStop(0.18,'rgba(255,20,147,0.7)');
+    ringG.addColorStop(0.38,'rgba(255,105,180,1)');
+    ringG.addColorStop(0.5,'rgba(255,255,255,1)');
+    ringG.addColorStop(0.62,'rgba(255,105,180,1)');
+    ringG.addColorStop(0.82,'rgba(255,20,147,0.7)');
+    ringG.addColorStop(1,'rgba(255,20,147,0)');
+    const lw=isMobile?5:8;
+
+    // Behind planet
+    ctx.save(); ctx.globalAlpha=0.5;
+    ctx.shadowColor='#ff69b4'; ctx.shadowBlur=30;
+    ctx.beginPath(); ctx.ellipse(px,py,rx,ry,0,Math.PI,Math.PI*2);
+    ctx.lineWidth=lw; ctx.strokeStyle=ringG; ctx.stroke();
+    ctx.restore();
+
+    // Front planet clip area (draw planet again on top to occlude ring)
+    ctx.save();
+    ctx.beginPath(); ctx.arc(px,py,pr,0,Math.PI*2);
+    ctx.fillStyle=grad; ctx.fill();
+    ctx.restore();
+
+    // In front of planet
+    ctx.save();
+    ctx.shadowColor='#ff69b4'; ctx.shadowBlur=50;
+    ctx.beginPath(); ctx.ellipse(px,py,rx,ry,0,0,Math.PI);
+    ctx.lineWidth=lw+2; ctx.strokeStyle=ringG; ctx.stroke();
+    ctx.restore();
+
+    // Extra glow ring
+    ctx.save(); ctx.globalAlpha=0.3;
+    ctx.shadowColor='#ff1493'; ctx.shadowBlur=80;
+    ctx.beginPath(); ctx.ellipse(px,py,rx*1.05,ry*1.1,0,0,Math.PI*2);
+    ctx.lineWidth=1; ctx.strokeStyle='rgba(255,105,180,0.6)'; ctx.stroke();
+    ctx.restore();
+  }
+
+  /* ═══════════════════════════════
+     FRASES HTML — distribución 3D
+     Orbitan a distintas distancias
+  ═══════════════════════════════ */
+  const PHRASES=[
+    {text:"Mi media naranja",  color:"#ff69b4"},
+    {text:"Un beso para ti",   color:"#ffd700"},
+    {text:"Siempre contigo",   color:"#ff69b4"},
+    {text:"Eres mi corazón",   color:"#ff1493"},
+    {text:"Amor verdadero",    color:"#ffd700"},
+    {text:"Te quiero sin fin", color:"#ff69b4"},
+    {text:"14 de Febrero",     color:"#ffd700"},
+    {text:"Solo tú y yo",      color:"#ff1493"},
+    {text:"Contigo lo es todo",color:"#ff69b4"},
+    {text:"Mi amor eterno",    color:"#ffd700"},
+    {text:"Para siempre",      color:"#ff69b4"},
+    {text:"Cada día te quiero más", color:"#ff1493"},
+    {text:"Hoy y siempre",     color:"#ffd700"},
+    {text:"Eres lo tuyo",      color:"#ff69b4"},
+    {text:"Mi corazón es tuyo",color:"#ff1493"},
+  ];
+  let phraseEls=[];
+
+  function buildPhrases(){
+    phLayer.innerHTML=''; phraseEls=[];
+    const n=isMobile?9:PHRASES.length;
+    for(let i=0;i<n;i++){
+      const p=PHRASES[i%PHRASES.length];
+      const el=document.createElement('div');
+      el.className='u-phrase';
+      el.textContent=p.text;
+      // Distributed across the scene in 3D-ish zones
+      const zone=i%3; // 0=top, 1=middle, 2=bottom
+      const angle=(i/n)*Math.PI*2;
+      const r=0.22+Math.random()*0.26; // radial distance from center (0..0.5 of screen)
+      const baseX=50+Math.cos(angle)*r*100;
+      const baseY= zone===0?(8+Math.random()*22): zone===1?(30+Math.random()*35):(60+Math.random()*28);
+      const fs=isMobile?(0.65+Math.random()*0.5):(0.8+Math.random()*0.65);
+      el.style.cssText=`color:${p.color};font-size:${fs}rem;left:${baseX}%;top:${baseY}%;`;
+      phLayer.appendChild(el);
+      phraseEls.push({el,baseX,baseY,angle,r,speed:0.3+Math.random()*0.4,phase:Math.random()*Math.PI*2,amp:4+Math.random()*8});
+    }
+  }
+
+  function animatePhrases(t){
+    phraseEls.forEach((p,i)=>{
+      const dy=Math.sin(t*p.speed+p.phase)*p.amp;
+      const dx=Math.cos(t*p.speed*0.7+p.phase)*p.amp*0.5;
+      const sc=0.92+0.08*Math.sin(t*p.speed*0.5+p.phase+1);
+      p.el.style.transform=`translate(${dx}px,${dy}px) scale(${sc})`;
+      p.el.style.opacity=(0.7+0.3*Math.sin(t*p.speed+p.phase+2)).toString();
     });
+  }
 
-    // Poema
-    const estrofas = [
-      "I.\nYo, que caminé mil años sin saber lo que era el frío,\nyo, que sostuve una espada mientras los imperios caían,\nyo, que olvidé el sabor de las lágrimas propias\nen el largo pasillo de las noches vacías.\n\nMi nombre era un eco que nadie pronunciaba,\nmi capa, el terciopelo de los ocasos perdidos.\nContaba los siglos como quien cuenta gotas\nen el filo infinito de un destino maldito.\n\nHasta que llegaste tú.",
-      "II.\nNo con truenos, no con anuncios de ángeles.\nLlegaste como llega la lluvia al polvo,\ncon ese paso tuyo que no pide permiso,\ncon esa risa que rompe todos mis hechizos.\n\nY de repente, yo, que había visto morir estrellas,\nme encontré temblando ante tus ojos.\nYo, que no necesitaba nada,\nnecesitaba tu mano entre mis manos,\nnecesitaba tu voz diciendo mi nombre\ncomo si fuera la única palabra\nque merece ser dicha en este mundo.",
-      "III.\nTú, mi niña, mi única respuesta.\nTú, que encendiste velas para que yo me quedara,\nque con tus manos frágiles sostuviste\nno una espada, sino mi corazón de piedra\ny lo hiciste latir por primera vez.\n\n¿Qué son mil años frente a una tarde contigo?\n¿Qué es la inmortalidad frente a un beso tuyo?\nYo cambiaba la eternidad entera\npor una noche viendo cómo duermes,\npor una mañana viendo cómo despiertas,\ncon ese desorden de pelo que tanto me gusta,\ncon esa pereza tuya de princesa que no sabe\nque es dueña de un reino más grande que los siglos.",
-      "IV.\nPorque tú eres mi única novia,\nmi única muerte, mi única vida.\nLa que me enseñó que el tiempo no se cuenta\nen años, sino en miradas.\nLa que me mostró que el amor no es para siempre,\nes para ahora, es para ti, es para nosotros.\n\nY cuando la lluvia cae sobre esta ciudad,\ncuando el viento trae memorias de otras eras,\nyo solo recuerdo tus manos en mi pecho,\nsolo recuerdo tu risa, solo recuerdo tu nombre.",
-      "V.\nTú, mi niña, mi amor, mi única.\nLa que me hizo mortal solo con quererme.\nLa que me hizo eterno solo con mirarme.\n\nNo necesito más espadas,\nno necesito más siglos.\nSolo necesito tus ojos al despertar,\nsolo necesito tu mano cuando anochece,\nsolo necesito tu voz diciendo 'te quiero'\nen ese cuarto donde el tiempo se detiene\ny soy, por fin, solo el hombre\nque tiene la suerte de amarte.\n\nPorque antes de ti, yo fui leyenda.\nDespués de ti, soy solo tuyo.\nY no hay inmortalidad más grande\nque esta: ser el dueño de tus sueños,\nser el que te abraza cuando llueve,\nser el que te besa cuando amanece.\n\nTe amo, mi niña.\nHoy y siempre.\nEn esta vida y en las nueve que me quedan."
-    ];
-    const navDiv   = document.getElementById('estrofaNav');
-    const textoDiv = document.getElementById('estrofaTexto');
-    const contador = document.getElementById('contadorEstrofa');
-    let current    = 0;
-    function renderEstrofa(index){
-      textoDiv.style.opacity='0';
-      setTimeout(()=>{
-        textoDiv.textContent=estrofas[index];
-        textoDiv.style.opacity='1';
-        contador.textContent=`${index+1} / ${estrofas.length}`;
-        document.querySelectorAll('.estrofa-btn').forEach((b,i)=>b.classList.toggle('active',i===index));
-      },200);
+  /* ═══════════════════════════════
+     KAWAII IMAGES — distribuidas por escena
+     Múltiples instancias posibles
+  ═══════════════════════════════ */
+  const kwSrcs=['1.png','2.png','3.png','4.png'];
+  const kwData=[];
+
+  /* Posiciones en % para distribución tipo imagen 2 */
+  const kwPositions=[
+    {left:'2%',  top:'8%',  size:0.11, delay:0, dur:3.2},   // top-left
+    {right:'2%', top:'7%',  size:0.11, delay:0.5, dur:3.5}, // top-right
+    {left:'1%',  top:'38%', size:0.10, delay:1.0, dur:3.0}, // mid-left
+    {right:'1%', top:'36%', size:0.10, delay:1.5, dur:3.8}, // mid-right
+    {left:'3%',  bottom:'15%', size:0.12, delay:0.3, dur:3.4}, // bot-left
+    {right:'3%', bottom:'14%', size:0.12, delay:0.8, dur:3.1}, // bot-right
+    /* Extra near planet — small */
+    {left:'38%', top:'12%', size:0.07, delay:0.2, dur:2.8},
+    {left:'55%', top:'10%', size:0.07, delay:1.2, dur:3.3},
+  ];
+
+  function buildKawaii(){
+    kwLayer.innerHTML=''; kwData.length=0;
+    const count=isMobile?4:kwPositions.length;
+    for(let i=0;i<count;i++){
+      const pos=kwPositions[i];
+      const src=kwSrcs[i%kwSrcs.length];
+      const img=document.createElement('img');
+      img.src=src; img.className='kw'; img.alt='';
+      const sz=Math.floor(Math.min(W,H)*pos.size);
+      img.style.width=sz+'px'; img.style.height='auto';
+      if(pos.left)  img.style.left=pos.left;
+      if(pos.right) img.style.right=pos.right;
+      if(pos.top)   img.style.top=pos.top;
+      if(pos.bottom)img.style.bottom=pos.bottom;
+      img.onerror=()=>{ img.style.display='none'; };
+      kwLayer.appendChild(img);
+      kwData.push({img, delay:pos.delay, dur:pos.dur, phase:pos.delay});
     }
-    for(let i=0;i<estrofas.length;i++){
-      const btn=document.createElement('button');
-      btn.classList.add('estrofa-btn');
-      if(i===0)btn.classList.add('active');
-      btn.textContent=i+1;
-      btn.addEventListener('click',()=>{ current=i; renderEstrofa(current); });
-      navDiv.appendChild(btn);
-    }
-    renderEstrofa(0);
-    document.getElementById('prevEstrofa').addEventListener('click',()=>{ if(current>0){ current--; renderEstrofa(current); } });
-    document.getElementById('nextEstrofa').addEventListener('click',()=>{ if(current<estrofas.length-1){ current++; renderEstrofa(current); } });
+  }
 
-    // Fallback foto
-    document.getElementById('fotoAdriana').addEventListener('error',function(){ this.src='https://placehold.co/600x800/fdf8f5/d4af37?text=Adriana'; });
-  })();
+  function animateKawaii(t){
+    kwData.forEach(k=>{
+      const dy=Math.sin(t/k.dur*Math.PI*2+k.phase)*10;
+      const rot=Math.sin(t/k.dur*Math.PI*2+k.phase)*3;
+      k.img.style.transform=`translateY(${dy}px) rotate(${rot}deg)`;
+    });
+  }
 
+  function placeKawaii(){
+    buildKawaii();
+  }
 
-  /* ═══════════════════════════════════════════════
-     UNIVERSO 2D — Canvas de alto rendimiento
-     Sin Three.js, sin bloom pesado, 60 fps fluido
-  ═══════════════════════════════════════════════ */
-  (function(){
-    const canvas = document.getElementById('universo-canvas');
-    const ctx    = canvas.getContext('2d');
-    const section = document.getElementById('universo-final');
+  /* ═══════════════════════════════
+     FRASE INFERIOR ROTATIVA
+  ═══════════════════════════════ */
+  const pillPhrases=["Te Amo!","Mi Amor","Cada latido es para ti","Contigo lo es todo","Mi amor eterno","Eres mi universo","Solo tú y yo","Para siempre, amor","Hoy y siempre"];
+  let pidx=0;
+  const pill=document.getElementById('livePill');
+  setInterval(()=>{
+    pidx=(pidx+1)%pillPhrases.length;
+    pill.style.opacity='0';
+    setTimeout(()=>{ pill.textContent=pillPhrases[pidx]; pill.style.opacity='1'; },380);
+  },4200);
 
-    /* ── Responsive sizing ── */
-    let W, H, CX, CY, isMobile;
-    function resize(){
-      W  = section.offsetWidth;
-      H  = section.offsetHeight;
-      canvas.width  = W;
-      canvas.height = H;
-      CX = W/2; CY = H/2;
-      isMobile = W < 600;
-      positionKawaii();
-    }
+  /* ═══════════════════════════════
+     DRAW LOOP
+  ═══════════════════════════════ */
+  let raf=null;
+  function draw(ms){
+    const t=ms*0.001;
+    ctx.clearRect(0,0,W,H);
 
-    /* ── Estrellas ── */
-    const STAR_COUNT = 500;
-    const stars = [];
-    function makeStars(){
-      stars.length = 0;
-      for(let i=0;i<STAR_COUNT;i++){
-        stars.push({
-          x: Math.random()*W,
-          y: Math.random()*H,
-          r: Math.random()*1.6 + 0.3,
-          alpha: Math.random()*0.6 + 0.3,
-          twinkleSpeed: Math.random()*0.02 + 0.005,
-          phase: Math.random()*Math.PI*2,
-          color: Math.random()<0.3 ? '#ffaacc' : '#ffffff'
-        });
-      }
-    }
+    /* Background — deep dark like image 2 */
+    const bg=ctx.createRadialGradient(CX,CY*0.4,0,CX,CY,Math.max(W,H)*0.85);
+    bg.addColorStop(0,'#1a0010');
+    bg.addColorStop(0.3,'#0d0008');
+    bg.addColorStop(0.7,'#060004');
+    bg.addColorStop(1,'#020001');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
 
-    /* ── Corazones voladores ── */
-    const HEART_COUNT = 18;
-    const floatHearts = [];
-    function spawnHeart(){
-      return {
-        x: Math.random()*W,
-        y: H + 20,
-        size: Math.random()*(isMobile?10:18)+6,
-        speed: Math.random()*0.6+0.3,
-        drift: (Math.random()-0.5)*0.4,
-        alpha: Math.random()*0.5+0.4,
-        color: Math.random()<0.5?'#ff69b4':'#ff1493'
-      };
-    }
-    function makeHearts(){
-      floatHearts.length=0;
-      for(let i=0;i<HEART_COUNT;i++){
-        const h=spawnHeart();
-        h.y=Math.random()*H; // distribuidos al inicio
-        floatHearts.push(h);
-      }
-    }
-    function drawHeart(x,y,size,color,alpha){
-      ctx.save();
-      ctx.globalAlpha=alpha;
-      ctx.fillStyle=color;
-      ctx.shadowColor=color;
-      ctx.shadowBlur=12;
-      ctx.beginPath();
-      const s=size;
-      ctx.moveTo(x,y-s*0.25);
-      ctx.bezierCurveTo(x,y-s*0.7, x-s,y-s*0.7, x-s,y-s*0.25);
-      ctx.bezierCurveTo(x-s,y+s*0.1, x,y+s*0.5, x,y+s*0.5);
-      ctx.bezierCurveTo(x,y+s*0.5, x+s,y+s*0.1, x+s,y-s*0.25);
-      ctx.bezierCurveTo(x+s,y-s*0.7, x,y-s*0.7, x,y-s*0.25);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    /* ── "Planeta" tipo Saturno (círculo + anillo) en el centro ── */
-    function drawPlanet(t){
-      const px = CX, py = isMobile ? CY*0.55 : CY*0.52;
-      const pr = isMobile ? W*0.12 : Math.min(W,H)*0.13;
-
-      // Cuerpo
-      const grad = ctx.createRadialGradient(px-pr*0.3, py-pr*0.3, pr*0.05, px, py, pr);
-      grad.addColorStop(0,'#ff4488');
-      grad.addColorStop(0.5,'#c41e3a');
-      grad.addColorStop(1,'#6b0020');
-      ctx.save();
-      ctx.shadowColor='#ff1493';
-      ctx.shadowBlur=40;
-      ctx.beginPath();
-      ctx.arc(px,py,pr,0,Math.PI*2);
-      ctx.fillStyle=grad;
-      ctx.fill();
-      ctx.restore();
-
-      // Anillo brillante
-      const rx = pr*2.1, ry = pr*0.36;
-      const ringGrad = ctx.createLinearGradient(px-rx,py,px+rx,py);
-      ringGrad.addColorStop(0,'rgba(255,105,180,0)');
-      ringGrad.addColorStop(0.25,'rgba(255,20,147,0.9)');
-      ringGrad.addColorStop(0.5,'rgba(255,105,180,1)');
-      ringGrad.addColorStop(0.75,'rgba(255,20,147,0.9)');
-      ringGrad.addColorStop(1,'rgba(255,105,180,0)');
-
-      ctx.save();
-      ctx.shadowColor='#ff69b4';
-      ctx.shadowBlur=25;
-      // Zona debajo del planeta (para que el anillo pase "detrás")
-      ctx.beginPath();
-      ctx.ellipse(px,py,rx,ry,0,0,Math.PI); // mitad inferior → va delante del planeta
-      ctx.lineWidth=isMobile?6:10;
-      ctx.strokeStyle=ringGrad;
-      ctx.stroke();
-      ctx.restore();
-
-      // Parte superior del anillo (detrás del planeta) — ligeramente más tenue
-      ctx.save();
-      ctx.globalAlpha=0.55;
-      ctx.shadowColor='#ff69b4';
-      ctx.shadowBlur=20;
-      ctx.beginPath();
-      ctx.ellipse(px,py,rx,ry,0,Math.PI,Math.PI*2);
-      ctx.lineWidth=isMobile?5:8;
-      ctx.strokeStyle=ringGrad;
-      ctx.stroke();
-      ctx.restore();
-
-      // Destellos sobre el planeta
-      const nSparkles=8;
-      for(let i=0;i<nSparkles;i++){
-        const angle=(i/nSparkles)*Math.PI*2 + t*0.5;
-        const rr = pr*(0.3+0.7*Math.random());
-        const sx = px + Math.cos(angle)*rr;
-        const sy = py + Math.sin(angle)*rr*0.6;
-        const sa = 0.4+0.6*Math.abs(Math.sin(t*2+i));
+    /* ── Perspective ground plane (star field floor) ── */
+    {
+      const horizon=CY*0.7;
+      const fov=800;
+      for(const gs of groundStars){
+        // Slowly rotate
+        const angle=Math.atan2(gs.x,1)+(t*0.06);
+        const dist=Math.sqrt(gs.x*gs.x+1)*gs.z*0.8;
+        const gx3=Math.cos(angle)*dist;
+        const gz3=gs.z;
+        // Project
+        const scaleP=fov/(fov+gz3*600);
+        const sx=CX+gx3*scaleP*W*0.55;
+        const sy=horizon+(H-horizon)*scaleP*0.95;
+        if(sy<horizon||sy>H*1.02) continue;
+        const alpha=gs.alpha*scaleP*(0.4+0.4*Math.abs(Math.sin(t*0.7+gs.z)));
         ctx.save();
-        ctx.globalAlpha=sa*0.6;
-        ctx.fillStyle='#ffffff';
-        ctx.shadowColor='#ffffff';
-        ctx.shadowBlur=8;
+        ctx.globalAlpha=Math.min(alpha,0.85);
+        ctx.fillStyle=gs.color;
+        ctx.shadowColor=gs.color; ctx.shadowBlur=4;
         ctx.beginPath();
-        ctx.arc(sx,sy,1.2,0,Math.PI*2);
+        ctx.arc(sx,sy,gs.r*scaleP*1.5,0,Math.PI*2);
         ctx.fill();
         ctx.restore();
       }
     }
 
-    /* ── Partículas de brillo tipo campo estelar ── */
-    const sparkles=[];
-    function makeSparkles(){
-      sparkles.length=0;
-      for(let i=0;i<120;i++){
-        sparkles.push({x:Math.random()*W, y:Math.random()*H, r:Math.random()*2+0.5, speed:Math.random()*0.3+0.1, alpha:Math.random()});
-      }
-    }
-
-    /* ── Frases HTML flotantes ── */
-    const PHRASES = [
-      {text:"Mi media naranja",   color:"#ff69b4"},
-      {text:"Un beso para ti",    color:"#ffd700"},
-      {text:"Siempre contigo",    color:"#ff69b4"},
-      {text:"Eres mi corazón",    color:"#ff1493"},
-      {text:"Amor verdadero",     color:"#ffd700"},
-      {text:"Te quiero sin fin",  color:"#ff69b4"},
-      {text:"14 de Febrero",      color:"#ffd700"},
-      {text:"Solo tú y yo",       color:"#ff1493"},
-      {text:"Contigo lo es todo", color:"#ff69b4"},
-      {text:"Mi amor eterno",     color:"#ffd700"},
-      {text:"Para siempre",       color:"#ff69b4"},
-    ];
-    const phrasesContainer = document.getElementById('canvasPhrases');
-
-    function buildPhraseEls(){
-      phrasesContainer.innerHTML='';
-      PHRASES.forEach((p,i)=>{
-        const el=document.createElement('div');
-        el.className='cp-text';
-        el.textContent=p.text;
-        const fs = isMobile ? (0.7+Math.random()*0.5)+'rem' : (0.85+Math.random()*0.6)+'rem';
-        el.style.cssText=`
-          color:${p.color};
-          font-size:${fs};
-          left:${5+Math.random()*85}%;
-          top:${5+Math.random()*80}%;
-          animation-duration:${3+Math.random()*3}s;
-          animation-delay:${-Math.random()*4}s;
-          opacity:0.85;
-        `;
-        phrasesContainer.appendChild(el);
-      });
-    }
-
-    /* ── Kawaii images positioning ── */
-    function positionKawaii(){
-      const imgs=['kw1','kw2','kw3','kw4'];
-      const positions = isMobile
-        ? [{l:'2%', t:'8%'},{r:'2%',t:'8%'},{l:'2%',b:'12%'},{r:'2%',b:'12%'}]
-        : [{l:'2%',t:'12%'},{r:'2%',t:'12%'},{l:'2%',b:'18%'},{r:'2%',b:'18%'}];
-      const sz = isMobile ? '80px' : '130px';
-      imgs.forEach((id,i)=>{
-        const el=document.getElementById(id);
-        if(!el) return;
-        el.style.width=sz;
-        el.style.height='auto';
-        el.style.left  = positions[i].l||'';
-        el.style.right = positions[i].r||'';
-        el.style.top   = positions[i].t||'';
-        el.style.bottom= positions[i].b||'';
-        el.style.animationDuration=(3+i*0.7)+'s';
-        el.style.animationDelay=(-i*0.5)+'s';
-        // On error: hide gracefully
-        el.onerror=()=>{ el.style.display='none'; };
-      });
-    }
-
-    /* ── Frase inferior rotativa ── */
-    const liveEl=document.getElementById('livePhrase');
-    const phrasesLive=["Te Amo!","Mi Amor","Cada latido es para ti","Contigo lo es todo","Mi amor eterno","Eres mi universo","Solo tú y yo","Para siempre, amor"];
-    let idx=0;
-    setInterval(()=>{
-      idx=(idx+1)%phrasesLive.length;
-      liveEl.style.opacity='0';
-      setTimeout(()=>{ liveEl.textContent=phrasesLive[idx]; liveEl.style.opacity='1'; },350);
-    },4000);
-
-    /* ── LOOP de animación ── */
-    let raf, lastT=0;
-    function draw(ts){
-      const t = ts*0.001;
-      ctx.clearRect(0,0,W,H);
-
-      // Fondo degradado oscuro
-      const bg=ctx.createRadialGradient(CX,CY,0,CX,CY,Math.max(W,H)*0.75);
-      bg.addColorStop(0,'#2d0018');
-      bg.addColorStop(0.5,'#140009');
-      bg.addColorStop(1,'#080005');
-      ctx.fillStyle=bg;
-      ctx.fillRect(0,0,W,H);
-
-      // Estrellas
-      for(const s of stars){
-        const a=s.alpha*(0.6+0.4*Math.sin(t*s.twinkleSpeed*60+s.phase));
+    /* ── 3D star field — tunnel/galaxy spin ── */
+    {
+      const ROT_SPEED=0.04; // slow spin
+      const fov=W*0.55;
+      for(const s of stars3d){
+        s.z -= 0.0025; // stars fly toward viewer
+        if(s.z<=0) { s.z=1; s.x=(Math.random()-0.5)*2; s.y=(Math.random()-0.5)*2; }
+        const angle=Math.atan2(s.y,s.x)+t*ROT_SPEED;
+        const r=Math.sqrt(s.x*s.x+s.y*s.y);
+        const rx=Math.cos(angle)*r, ry=Math.sin(angle)*r;
+        const scale=fov/(fov+s.z*fov);
+        const sx=CX+rx*scale*W*SPREAD;
+        const sy=CY+ry*scale*H*SPREAD*0.65;
+        if(sx<-20||sx>W+20||sy<-20||sy>H+20) continue;
+        const tw=0.6+0.4*Math.sin(t*s.twinkleSpeed*60+s.twinkle);
+        const alpha=tw*(1-s.z)*0.9;
         ctx.save();
-        ctx.globalAlpha=a;
+        ctx.globalAlpha=Math.min(alpha,0.95);
         ctx.fillStyle=s.color;
         ctx.shadowColor=s.color;
-        ctx.shadowBlur=s.color==='#ffffff'?0:6;
+        ctx.shadowBlur=s.color==='#ffffff'?2:8;
         ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.arc(sx,sy,s.r*scale*1.5,0,Math.PI*2);
         ctx.fill();
         ctx.restore();
       }
-
-      // Partículas brillantes
-      for(const sp of sparkles){
-        sp.y-=sp.speed;
-        if(sp.y<0){ sp.y=H; sp.x=Math.random()*W; }
-        ctx.save();
-        ctx.globalAlpha=0.3+0.4*Math.abs(Math.sin(t*sp.speed*10+sp.x));
-        ctx.fillStyle='#ffccee';
-        ctx.beginPath();
-        ctx.arc(sp.x,sp.y,sp.r*0.7,0,Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-      }
-
-      // Planeta tipo Saturno
-      drawPlanet(t);
-
-      // Corazones flotantes
-      for(const h of floatHearts){
-        h.y -= h.speed;
-        h.x += h.drift;
-        if(h.y < -30){ Object.assign(h, spawnHeart()); }
-        drawHeart(h.x, h.y, h.size, h.color, h.alpha);
-      }
-
-      raf=requestAnimationFrame(draw);
     }
 
-    /* ── Intersection Observer: activar solo cuando sea visible ── */
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          if(!raf) raf=requestAnimationFrame(draw);
-        } else {
-          if(raf){ cancelAnimationFrame(raf); raf=null; }
-        }
-      });
-    },{threshold:0.1});
-    observer.observe(section);
+    /* Planet */
+    drawPlanet(t);
 
-    /* ── Init ── */
-    resize();
-    makeStars();
-    makeHearts();
-    makeSparkles();
-    buildPhraseEls();
+    /* Bloom halo around planet */
+    {
+      const px=CX, py=isMobile?CY*0.38:CY*0.40;
+      const pr=isMobile?W*0.11:Math.min(W,H)*0.115;
+      for(let i=3;i>=1;i--){
+        const hg=ctx.createRadialGradient(px,py,pr,px,py,pr*(1.5+i*0.8));
+        hg.addColorStop(0,`rgba(255,20,147,${0.08/i})`);
+        hg.addColorStop(1,'rgba(255,20,147,0)');
+        ctx.save(); ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(px,py,pr*(2.5+i),0,Math.PI*2); ctx.fill(); ctx.restore();
+      }
+    }
 
-    window.addEventListener('resize',()=>{
-      resize();
-      makeStars();
-      makeHearts();
-      makeSparkles();
-      buildPhraseEls();
+    /* Hearts */
+    for(const h of hearts){
+      h.y-=h.speed; h.x+=h.drift;
+      if(h.y<-30) Object.assign(h,spawnHeart());
+      drawHeart(h.x,h.y,h.size,h.color,h.alpha);
+    }
+
+    /* Animate phrase HTML elements */
+    animatePhrases(t);
+    animateKawaii(t);
+
+    raf=requestAnimationFrame(draw);
+  }
+
+  /* IntersectionObserver — run only when visible */
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ if(!raf) raf=requestAnimationFrame(draw); }
+      else { if(raf){ cancelAnimationFrame(raf); raf=null; } }
     });
-  })();
-  </script>
+  },{threshold:0.05}).observe(section);
+
+  /* Init */
+  resize();
+  initStars();
+  initGround();
+  initHearts();
+  buildPhrases();
+
+  window.addEventListener('resize',()=>{
+    resize(); initStars(); initGround(); initHearts(); buildPhrases();
+  });
+})();
+</script>
 </body>
 </html>

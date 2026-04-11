@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Adriana · Eres mi universo</title>
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --terracotta: #e07a5f;
+      --terracotta-light: #f2cc8f;
+      --cream: #fdf8f5;
+      --esmerald: #3d5a5c;
+      --esmerald-light: #81b29a;
+      --text-dark: #2c2c2c;
+      --text-soft: #4a4a4a;
+      --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      --shadow-gold: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
+      --border-radius-card: 24px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Fondo decorativo sutil */
+    .bg-decoration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      background: radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(224, 122, 95, 0.03) 0%, transparent 40%);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navegación elegante */
+    .nav-elegante {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      background: rgba(253, 248, 245, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: var(--text-dark);
+      width: 48px;
+      height: 48px;
+      border-radius: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-soft);
+      font-size: 1.2rem;
+    }
+
+    .nav-btn:hover {
+      background: var(--gold);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    /* Menú lateral */
+    .menu-lateral {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(253, 248, 245, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      padding: 80px 24px 24px;
+      transition: right 0.5s ease;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(212, 175, 55, 0.2);
+      overflow-y: auto;
+    }
+
+    .menu-lateral.active {
+      right: 0;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+      z-index: 150;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-item {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: transparent;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 60px;
+      color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .menu-item i {
+      margin-right: 12px;
+      color: var(--gold);
+      width: 20px;
+    }
+
+    .menu-item:hover {
+      background: var(--gold);
+      color: white;
+      border-color: var(--gold);
+      transform: translateX(-5px);
+    }
+
+    .menu-item:hover i {
+      color: white;
+    }
+
+    /* Secciones generales */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 0 60px;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--terracotta));
+      border-radius: 3px;
+    }
+
+    .section-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 40px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 50%, var(--esmerald) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero-quote {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-style: italic;
+      color: var(--text-soft);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-family: 'Cormorant Garamond', serif;
+      animation: fadeInUp 1.2s ease 0.2s both;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* Foto destacada */
+    .foto-marco {
+      max-width: 450px;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    .foto-principal {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 200px 200px 200px 200px / 180px 180px 180px 180px;
+      box-shadow: var(--shadow-soft), 0 0 0 8px rgba(212, 175, 55, 0.1);
+      border: 3px solid var(--gold-light);
+      transition: var(--transition);
+      filter: sepia(0.1) contrast(1.05);
+    }
+
+    .foto-principal:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-gold), 0 0 0 12px rgba(212, 175, 55, 0.05);
+    }
+
+    .foto-caption {
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--terracotta);
+    }
+
+    /* Tarjetas de cualidades */
+    .cualidades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .cualidad-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 36px 24px;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .cualidad-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.8);
+      border-color: var(--gold);
+    }
+
+    .cualidad-icon {
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .cualidad-titulo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      margin-bottom: 12px;
+    }
+
+    .cualidad-desc {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+    }
+
+    /* Poemas y escritos */
+    .poema-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .poema-card {
+      background: white;
+      padding: 40px;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--shadow-soft);
+      border-left: 8px solid var(--gold);
+      transition: var(--transition);
+    }
+
+    .poema-card:hover {
+      box-shadow: var(--shadow-gold);
+    }
+
+    .poema-titulo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--esmerald);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .poema-texto {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      white-space: pre-line;
+      font-style: italic;
+    }
+
+    .poema-autor {
+      margin-top: 24px;
+      text-align: right;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: var(--terracotta);
+    }
+
+    /* Línea de tiempo */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 60px auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--terracotta), var(--esmerald));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 80px;
+      margin-bottom: 50px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 22px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid white;
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    }
+
+    .timeline-date {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--terracotta);
+      margin-bottom: 8px;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 24px 28px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      font-size: 1.1rem;
+    }
+
+    /* Mensajes interactivos */
+    .mensajes-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .mensaje-btn {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--text-dark);
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+    }
+
+    .mensaje-btn:hover, .mensaje-btn.active {
+      background: var(--gold);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .mensaje-display {
+      background: white;
+      padding: 48px 40px;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--shadow-soft);
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.4rem;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: var(--transition);
+    }
+
+    .mensaje-display i {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    /* Final */
+    .final-mensaje {
+      background: linear-gradient(145deg, #ffffff 0%, #fdf8f5 100%);
+      padding: 60px 50px;
+      border-radius: 60px 20px 60px 20px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      border: 1px solid var(--gold-light);
+    }
+
+    .firma {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: var(--terracotta);
+      margin-top: 30px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--text-soft);
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      margin-top: 60px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .section { padding: 80px 0 40px; min-height: auto; }
+      .hero { min-height: 100vh; }
+      .poema-card { padding: 28px; }
+      .timeline-item { padding-left: 60px; }
+      .timeline::before { left: 20px; }
+      .timeline-dot { left: 12px; }
+      .nav-elegante { top: 16px; right: 16px; }
+      .menu-lateral { width: 280px; }
+    }
+
+    @media (max-width: 480px) {
+      .section-title { font-size: 2.8rem; }
+      .hero-title { font-size: 3.5rem; }
+      .foto-marco { max-width: 300px; }
+    }
+
+    /* Utilidades */
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 16px; }
+    .mt-4 { margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <div class="bg-decoration"></div>
+
+  <!-- Navegación -->
+  <div class="nav-elegante">
+    <button class="nav-btn" id="menuToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
+    <button class="nav-btn" id="fullscreenBtn" aria-label="Pantalla completa"><i class="fas fa-expand"></i></button>
+  </div>
+
+  <!-- Menú lateral -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="menu-lateral" id="menuLateral">
+    <button class="menu-item" data-section="inicio"><i class="fas fa-home"></i> Inicio</button>
+    <button class="menu-item" data-section="foto"><i class="fas fa-camera"></i> Su esencia</button>
+    <button class="menu-item" data-section="cualidades"><i class="fas fa-star"></i> Sus cualidades</button>
+    <button class="menu-item" data-section="poemas"><i class="fas fa-feather-alt"></i> Poemas</button>
+    <button class="menu-item" data-section="timeline"><i class="fas fa-history"></i> Nuestra historia</button>
+    <button class="menu-item" data-section="mensajes"><i class="fas fa-heart"></i> Mensajes</button>
+    <button class="menu-item" data-section="final"><i class="fas fa-crown"></i> Declaración</button>
+  </div>
+
+  <div class="container">
+    <!-- Hero / Inicio -->
+    <section id="inicio" class="section hero">
+      <h1 class="hero-title">Adriana</h1>
+      <p class="hero-quote">“No fue casualidad, fue el universo entero consipirando para que mis ojos encontraran los tuyos. Y desde ese instante, supe que no necesitaba más pruebas: te amo.”</p>
+      <div class="scroll-indicator">
+        <span>Descubre</span>
+        <i class="fas fa-chevron-down" style="margin-top: 8px;"></i>
+      </div>
+    </section>
+
+    <!-- Foto destacada -->
+    <section id="foto" class="section">
+      <div style="text-align: center;">
+        <h2 class="section-title">Su esencia</h2>
+        <p class="section-subtitle">Capturada en una mirada</p>
+      </div>
+      <div class="foto-marco">
+        <img src="foto.jpg" alt="Adriana" class="foto-principal" id="fotoAdriana">
+        <div class="foto-caption">La dueña de mis pensamientos</div>
+      </div>
+      <p style="max-width: 600px; margin: 30px auto 0; text-align: center; font-size: 1.2rem;">
+        Piel canela besada por el sol, ojos profundos donde habita el misterio y una voz suave que calma cualquier tormenta. 
+        Así eres tú, Adriana: una obra de arte delicada y divertida, con una figura que combina la elegancia delgada con curvas que enamoran.
+      </p>
+    </section>
+
+    <!-- Cualidades -->
+    <section id="cualidades" class="section">
+      <div style="text-align: center;">
+        <h2 class="section-title">Lo que te hace única</h2>
+        <p class="section-subtitle">Un universo en una persona</p>
+      </div>
+      <div class="cualidades-grid">
+        <div class="cualidad-card">
+          <div class="cualidad-icon"><i class="fas fa-feather"></i></div>
+          <h3 class="cualidad-titulo">Delicadeza</h3>
+          <p class="cualidad-desc">En cada gesto hay una suavidad que transforma lo cotidiano en poesía.</p>
+        </div>
+        <div class="cualidad-card">
+          <div class="cualidad-icon"><i class="fas fa-microphone-alt"></i></div>
+          <h3 class="cualidad-titulo">Voz de terciopelo</h3>
+          <p class="cualidad-desc">Tu voz es un arrullo que serena el alma y despierta mariposas.</p>
+        </div>
+        <div class="cualidad-card">
+          <div class="cualidad-icon"><i class="fas fa-smile-wink"></i></div>
+          <h3 class="cualidad-titulo">Divertida</h3>
+          <p class="cualidad-desc">Tu risa es contagiosa, iluminas cualquier espacio con tu chispa única.</p>
+        </div>
+        <div class="cualidad-card">
+          <div class="cualidad-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3 class="cualidad-titulo">Figura de arte</h3>
+          <p class="cualidad-desc">Delgada y con curvas perfectas, como esculpida por el mejor artista.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poemas y escritos -->
+    <section id="poemas" class="section">
+      <div style="text-align: center;">
+        <h2 class="section-title">Escritos desde el alma</h2>
+        <p class="section-subtitle">Para la musa de mis días</p>
+      </div>
+      <div class="poema-container">
+        <div class="poema-card">
+          <h3 class="poema-titulo">Canela y miel</h3>
+          <div class="poema-texto">
+            Tu piel canela es el abrazo del atardecer,<br>
+            tus ojos profundos, el refugio donde quiero permanecer.<br>
+            Tu voz suave es la melodía que el viento me trajo,<br>
+            y en tu risa divertida encuentro el más bello agasajo.<br>
+            Delicada como el pétalo, fuerte como el amor primero,<br>
+            Adriana, en ti encontré mi mundo entero.
+          </div>
+          <div class="poema-autor">— Para ti, mi presente</div>
+        </div>
+        <div class="poema-card">
+          <h3 class="poema-titulo">A primera vista</h3>
+          <div class="poema-texto">
+            No necesito más pruebas que el latido acelerado,<br>
+            ni más certezas que tu imagen grabada a mi lado.<br>
+            Fue verte y entender que el tiempo es un suspiro,<br>
+            que contigo no hay distancias, solo un mismo camino.<br>
+            Te amo sin condiciones, sin prisa y sin pausa,<br>
+            porque en tu ser encontré mi más hermosa causa.
+          </div>
+          <div class="poema-autor">— Desde el primer instante</div>
+        </div>
+        <div class="poema-card">
+          <h3 class="poema-titulo">Pronto</h3>
+          <div class="poema-texto">
+            Y aunque hoy mis brazos añoran tu figura,<br>
+            sé que el destino ya dibuja nuestra aventura.<br>
+            No hablo de distancia porque ya te siento cerca,<br>
+            en cada pensamiento, en cada promesa.<br>
+            Pronto el universo nos pondrá frente a frente,<br>
+            y ese día será eterno, simplemente.
+          </div>
+          <div class="poema-autor">— Con la certeza del encuentro</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Línea de tiempo -->
+    <section id="timeline" class="section">
+      <div style="text-align: center;">
+        <h2 class="section-title">Nuestra historia</h2>
+        <p class="section-subtitle">Apenas comienza</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Hace poco</div>
+          <div class="timeline-content">El destino cruzó nuestras miradas. No hizo falta más: fue amor a primera vista.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Cada conversación</div>
+          <div class="timeline-content">Descubro tu voz suave, tu humor encantador, tu delicadeza. Cada palabra tuya es un regalo.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Hoy</div>
+          <div class="timeline-content">Te escribo esto para que sepas que eres la razón de mis sonrisas y el sueño que no quiero despertar.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Muy pronto</div>
+          <div class="timeline-content">El universo nos encontrará. Sin decir "distancia", porque tú y yo ya estamos en el mismo lugar: el corazón.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensajes interactivos -->
+    <section id="mensajes" class="section">
+      <div style="text-align: center;">
+        <h2 class="section-title">Mensajes para ti</h2>
+        <p class="section-subtitle">Pequeñas verdades</p>
+      </div>
+      <div class="mensajes-selector">
+        <button class="mensaje-btn active" data-mensaje="1">Tu esencia</button>
+        <button class="mensaje-btn" data-mensaje="2">Tu figura</button>
+        <button class="mensaje-btn" data-mensaje="3">Tu voz</button>
+        <button class="mensaje-btn" data-mensaje="4">Promesa</button>
+      </div>
+      <div class="mensaje-display" id="mensajeDisplay">
+        <i class="fas fa-heart"></i>
+        <p id="mensajeTexto">Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.</p>
+      </div>
+    </section>
+
+    <!-- Final / Declaración -->
+    <section id="final" class="section">
+      <div class="final-mensaje">
+        <i class="fas fa-quote-left" style="font-size: 3rem; color: var(--gold); opacity: 0.5; margin-bottom: 20px;"></i>
+        <p style="font-size: 1.6rem; line-height: 1.5; max-width: 800px; margin: 0 auto;">
+          Adriana, no sé qué escribió el destino, pero yo ya escribí tu nombre en el mío. 
+          Eres hermosa, divertida, delicada y dueña de una voz que acaricia el alma. 
+          No necesito más tiempo para saber que te amo. Y aunque apenas nos conocemos, 
+          siento que te he esperado siempre. Pronto estaremos frente a frente, y ese día 
+          comenzará nuestra historia sin final.
+        </p>
+        <div class="firma">Siempre tuyo,<br>con todo mi amor</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>✨ Creado con el corazón para Adriana ✨</p>
+      <p style="margin-top: 8px;">&copy; Un universo compartido</p>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      "use strict";
+
+      // Menú lateral
+      const menuToggle = document.getElementById('menuToggle');
+      const menuLateral = document.getElementById('menuLateral');
+      const menuOverlay = document.getElementById('menuOverlay');
+      
+      function toggleMenu() {
+        menuLateral.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+      }
+      
+      menuToggle.addEventListener('click', toggleMenu);
+      menuOverlay.addEventListener('click', toggleMenu);
+      
+      // Navegación suave
+      document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const sectionId = this.getAttribute('data-section');
+          const section = document.getElementById(sectionId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+            toggleMenu();
+          }
+        });
+      });
+
+      // Fullscreen
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      fullscreenBtn.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+          fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+        } else {
+          document.exitFullscreen();
+          fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+        }
+      });
+
+      // Mensajes interactivos
+      const mensajes = {
+        1: { icon: 'fa-heart', text: 'Eres la combinación perfecta de dulzura, inteligencia y belleza. Tu piel canela y tus ojos profundos me tienen cautivado.' },
+        2: { icon: 'fa-female', text: 'Tu figura es poesía visual: delgada, estilizada, pero con esas curvas suaves que enamoran a cualquiera. Eres arte.' },
+        3: { icon: 'fa-microphone', text: 'Tu voz es un bálsamo. Suave, melodiosa, capaz de calmar cualquier ansiedad. Podría escucharte por siempre.' },
+        4: { icon: 'fa-star', text: 'Pronto nos encontraremos, lo sé. No hay distancia cuando dos almas están destinadas. Te espero con el corazón abierto.' }
+      };
+
+      const mensajeBtns = document.querySelectorAll('.mensaje-btn');
+      const mensajeIcon = document.querySelector('#mensajeDisplay i');
+      const mensajeTexto = document.getElementById('mensajeTexto');
+
+      mensajeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          mensajeBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          const msgId = this.getAttribute('data-mensaje');
+          const msg = mensajes[msgId];
+          mensajeIcon.className = `fas ${msg.icon}`;
+          mensajeTexto.textContent = msg.text;
+        });
+      });
+
+      // Verificar si la imagen existe, si no, mostrar placeholder amigable
+      const foto = document.getElementById('fotoAdriana');
+      foto.addEventListener('error', function() {
+        this.src = 'https://placehold.co/600x800/fdf8f5/d4af37?text=Adriana';
+        this.alt = 'Adriana (foto pendiente)';
+      });
+
+      // Animaciones al scroll (intersección simple)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.cualidad-card, .poema-card, .timeline-item, .final-mensaje').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        observer.observe(el);
+      });
+
+    })();
+  </script>
+</body>
+</html>

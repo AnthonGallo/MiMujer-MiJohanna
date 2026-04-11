@@ -929,8 +929,8 @@
   }
 
   /* ═══════════════════════════════════════════
-     FRASES — LÓGICA COMPLETAMENTE REDISEÑADA
-     para móvil y desktop sin salirse de pantalla
+     FRASES — LÓGICA
+     para móvil y desktop
   ═══════════════════════════════════════════ */
   const PHRASES=[
     {text:"Eres el latido que da sentido a mi alma",   color:"#ff69b4"},
@@ -952,37 +952,20 @@
 
   let phraseEls=[];
 
-  /*
-   * Distribución en columnas/zonas seguras:
-   * Dividimos la pantalla en franjas horizontales y 
-   * dentro de cada franja asignamos posición left
-   * garantizando que la frase quepa completamente.
-   *
-   * En móvil: máx 10 frases, tamaño reducido, ancho max 80vw
-   * En desktop: hasta 15 frases, distribución más libre
-   */
   function buildPhrases(){
     phLayer.innerHTML=''; phraseEls=[];
 
-    const n = isMobile ? 10 : PHRASES.length;
+    const n = isMobile ? 15 : PHRASES.length;
 
     // Tamaño de fuente base según dispositivo
     const fsSm = isMobile ? 0.62 : 0.75;  // rem mínimo
     const fsLg = isMobile ? 0.78 : 1.05;  // rem máximo
 
-    // Zona segura de height: evitar el centro (donde está el planeta y título)
-    // Dividimos en bandas:
-    //   zona A: 5%  – 28%   (arriba del planeta)
-    //   zona B: 62% – 92%   (debajo del título central)
-    // En desktop también usamos los laterales del centro (30-60% con left/right extremos)
-
-    // Generamos posiciones predeterminadas en cuadrícula suave
+    // Posiciones predeterminadas en cuadrícula suave
     const positions = [];
 
     if(isMobile){
       // MÓVIL: 2 columnas, filas distribuidas
-      // Columna izquierda: left 2-4%, columna derecha: left 52-56%
-      // Pero con max-width 44vw para que quepan dos columnas sin solaparse
       const cols = [
         { leftPct: 3,  maxW: '44vw' },
         { leftPct: 52, maxW: '44vw' },
@@ -996,14 +979,12 @@
       }
     } else {
       // DESKTOP: distribución libre pero con márgenes seguros
-      // Lado izquierdo (left 1-8%) y derecho (right equivalente = ~55-92%) 
-      // y algunas en la mitad vertical lejos del centro
       const safePositions = [
         // Arriba - distribuidas horizontalmente
         { left:  2, top:  5 }, { left: 35, top:  6 }, { left: 65, top:  5 },
         { left: 15, top: 13 }, { left: 52, top: 14 }, { left: 78, top: 12 },
         { left:  3, top: 21 }, { left: 68, top: 20 },
-        // Abajo - distribuidas horizontalmente
+        // Abajo - distribución horizontalmente
         { left:  2, top: 63 }, { left: 38, top: 65 }, { left: 68, top: 63 },
         { left: 14, top: 73 }, { left: 54, top: 72 }, { left: 78, top: 74 },
         { left:  4, top: 83 },
@@ -1029,7 +1010,7 @@
         `left:${pos.left}%`,
         `top:${pos.top}%`,
         `max-width:${pos.maxW}`,
-        // CLAVE en móvil: permitir wrap para que no se salga
+        // Permitir wrap para que no se salga
         isMobile ? 'white-space:normal;line-height:1.3' : 'white-space:nowrap',
       ].join(';');
 
